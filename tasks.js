@@ -64,8 +64,43 @@ _____
 
 // Solution //
 
-const ladderLength = (beginWord, endWord, wordList) => {
-
-
+const findConnection = (word, wordSet) => {
+  let result = [];
+  const aASCII = "a".charCodeAt(0);
+  for (let i = 0; i < word.length; i += 1) {
+    // loopinf through each letter of the word
+    const firstHalf = word.substring(0, i);
+    const otherHalf = word.substring(i + 1);
+    for (let b = 0; b < 26; b += 1) {
+      // looping through eact alphabet's letter
+      const nextWord = firstHalf + String.fromCharCode(aASCII + b) + otherHalf;
+      if (wordSet.has(nextWord)) {
+        result = [...result, nextWord];
+      }
+    }
+  }
+  return result;
 };
 
+const ladderLength = (beginWord, endWord, wordList) => {
+  const wordSet = new Set(wordList);
+  const queue = [beginWord];
+  let distance = 0;
+  while (queue.length > 0) {
+    distance += 1;
+    let n = queue.length;
+    while (n--) {
+      const word = queue.shift();
+      const connections = findConnection(word, wordSet);
+      for (let i = 0; i < connections.length; i += 1) {
+        const nextWord = connections[i];
+        if (nextWord == endWord) {
+          return distance + 1;
+        }
+        queue.push(nextWord);
+        wordSet.delete(nextWord);
+      }
+    }
+  }
+  return 0;
+};

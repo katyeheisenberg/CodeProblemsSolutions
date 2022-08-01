@@ -157,3 +157,21 @@ const permute = (nums, permutation = [], result = []) => {             // space 
   }                                                                    // we're running our for loop 3times and once we pushed nmb into permut array we've to run for loop 2 more times
   return result;                                                       // and to loop through it again as each time we're reducing nums array
 };                                                                     // 3 * 2 * 1 = n * (n - 1) * (n - 2) * ... : n! -> n-factorial 0(N!)
+
+_____
+// another solution with reduced space complexity 0(1)
+const swap = (arr, start, i) => {
+  [arr[start], arr[i]] = [arr[i], arr[start]];
+};
+
+const permute1 = (nums, start = 0, result = []) => {         // in this case we're using our nums array to store our nmbLeft by changing it
+  if (start === nums.length - 1) {
+    result.push([...nums]);
+  }
+  for (let i = start; i < nums.length; i += 1) {
+    swap(nums, start, i);
+    permute(nums, start + 1, result);
+    swap(nums, start, i);
+  }
+  return result;
+};

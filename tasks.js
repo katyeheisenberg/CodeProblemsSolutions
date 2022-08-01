@@ -133,5 +133,27 @@ const ladderLength = (beginWord, endWord, wordList) => {
 _____
 
 // solution //
+// 1 _ _ - [2, 3]
+// 1 2 3
+// 1 3 2
 
-const permute = (nums) => {}
+// 2 _ _ - [1, 3]
+// 2 1 3
+// 2 3 1
+
+// 3 _ _ - [1, 2]
+// 3 1 2
+// 3 2 1
+
+const permute = (nums, permutation = [], result = []) => {             // space complexity:   2 + 1 + 0 : (n - 1) + (n - 2) + ... -> 0(N) - linear sc
+  if (nums.length === 0) {                                             // 1st- nums = [1, 2, 3] length - 2
+    result.push([...permutation]);                                     // 2nd- nums = [2, 3] length - 1
+  }                                                                    // 3rd- nums = [3] length - 0
+  for (let i = 0; i < nums.length; i += 1) {                           // 4th- nums = []
+    permutation = [...permutation, nums[i]];                           // stack runs 4 levels deep = n + 1
+    const nmbLeft = nums.filter((num, index) => index !== i); // <- it's the only time we use extra memory by creating new array
+    permute(nmbLeft, permutation, result);
+    permutation.pop();                                                 // time complexity
+  }                                                                    // we're running our for loop 3times and once we pushed nmb into permut array we've to run for loop 2 more times
+  return result;                                                       // and to loop through it again as each time we're reducing nums array
+};                                                                     // 3 * 2 * 1 = n * (n - 1) * (n - 2) * ... : n! -> n-factorial 0(N!)

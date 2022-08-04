@@ -198,5 +198,17 @@ const permute1 = (nums, start = 0, result = []) => {         // in this case we'
 //     -231 <= nums[i] <= 231 - 1
 //     nums[i] != nums[i + 1] for all valid i.
 
-// solution //
-
+// solution // <-- binary search
+// const findPeakElement = function (nums) {
+//   let lower = 0;
+//   let higher = nums.length - 1;
+//   while (higher > lower) {
+//     const i = Math.floor((higher + lower) / 2);
+//     if (nums[i] < nums[i + 1]) {
+//       lower = i + 1;
+//     } else {
+//       higher = i;
+//     }
+//   }
+//   return lower;
+// };

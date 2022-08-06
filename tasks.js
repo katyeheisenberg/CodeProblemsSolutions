@@ -242,3 +242,42 @@ const permute1 = (nums, start = 0, result = []) => {         // in this case we'
 //     The number of nodes in the list is in the range [1, 105].
 //     0 <= Node.val <= 9
 
+// solution //
+// const findMidPoint = (head) => {
+//   let slow = head;
+//   let fast = head;
+//   while (fast && fast.next) {
+//     slow = slow.next;
+//     fast = fast.next.next;
+//   }
+//   return slow;
+// };
+
+// const reverse = (head) => {
+//   let prev = null;
+//   let current = head;
+//   while (current) {
+//     const next = current.next;
+//     current.next = prev;
+//     prev = current;
+//     current = next;
+//   }
+//   return prev;
+// };
+
+// const compare = (list1, list2) => {
+//   while (list1 && list2) {
+//     if (list1.val !== list2.val) {
+//       return false;
+//     }
+//     list1 = list1.next;
+//     list2 = list2.next;
+//   }
+//   return true;
+// };
+
+// const isPalindrome = (head) => {
+//   const midPoint = findMidPoint(head);
+//   const tail = reverse(midPoint);
+//   return compare(head, tail);
+// };

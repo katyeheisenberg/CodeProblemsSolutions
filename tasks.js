@@ -302,7 +302,7 @@ const isPalindrome = (head) => {
 //     The number of nodes in the list is the range [0, 5000].
 //     -5000 <= Node.val <= 5000
 
-solution -> linear time complexity
+// solution -> linear time complexity
 
 const reverseList = (head) => {
     let previous = null

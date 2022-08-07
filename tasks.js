@@ -348,3 +348,19 @@ const reverseList = (head) => {
 //     -1000 <= target <= 1000
 //     The tests are generated such that there is exactly one solution.
 
+const twoSum = (numbers, target) => { // this solution runs in linear time complexity and constant space
+  let lower = 0;
+  let upper = numbers.length - 1;
+  while (upper > lower) {
+    let sum = numbers[lower] + numbers[upper];
+    if (sum < target) {
+      lower += 1;
+    }
+    if (sum > target) {
+      upper -= 1;
+    }
+    if (sum === target) {
+      return [lower + 1, upper + 1];
+    }
+  }
+};

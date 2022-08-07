@@ -213,7 +213,7 @@ const permute1 = (nums, start = 0, result = []) => {         // in this case we'
 //   return lower;
 // };
 
-solution with linear sc 0(n) (brute force)
+// solution with linear sc 0(n) (brute force)
 
 const findPeakElement = function(nums) {
     let isPrevSmaller = true

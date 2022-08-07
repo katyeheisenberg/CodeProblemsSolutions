@@ -213,18 +213,18 @@ const permute1 = (nums, start = 0, result = []) => {         // in this case we'
 //   return lower;
 // };
 
-// solution with linear sc 0(n) (brute force)
+solution with linear sc 0(n) (brute force)
 
-// const findPeakElement = function(nums) {
-//     let isPrevSmaller = true
-//     for (let i = 0; i < nums.length - 1; i += 1) {
-//         if(nums[i] > nums[i + 1] && isPrevSmaller) {
-//             return i
-//         }
-//         isPrevSmaller = nums[i] < nums[i + 1]
-//     }
-//     return nums.length - 1
-// };
+const findPeakElement = function(nums) {
+    let isPrevSmaller = true
+    for (let i = 0; i < nums.length - 1; i += 1) {
+        if(nums[i] > nums[i + 1] && isPrevSmaller) {
+            return i
+        }
+        isPrevSmaller = nums[i] < nums[i + 1]
+    }
+    return nums.length - 1
+};
 
 // 234. palindrome linked list
 // Given the head of a singly linked list, return true if it is a palindrome.
@@ -242,45 +242,45 @@ const permute1 = (nums, start = 0, result = []) => {         // in this case we'
 //     The number of nodes in the list is in the range [1, 105].
 //     0 <= Node.val <= 9
 
-// solution //
-// const findMidPoint = (head) => {
-//   let slow = head;
-//   let fast = head;
-//   while (fast && fast.next) {
-//     slow = slow.next;
-//     fast = fast.next.next;
-//   }
-//   return slow;
-// };
+solution //
+const findMidPoint = (head) => {
+  let slow = head;
+  let fast = head;
+  while (fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+  return slow;
+};
 
-// const reverse = (head) => {
-//   let prev = null;
-//   let current = head;
-//   while (current) {
-//     const next = current.next;
-//     current.next = prev;
-//     prev = current;
-//     current = next;
-//   }
-//   return prev;
-// };
+const reverse = (head) => {
+  let prev = null;
+  let current = head;
+  while (current) {
+    const next = current.next;
+    current.next = prev;
+    prev = current;
+    current = next;
+  }
+  return prev;
+};
 
-// const compare = (list1, list2) => {
-//   while (list1 && list2) {
-//     if (list1.val !== list2.val) {
-//       return false;
-//     }
-//     list1 = list1.next;
-//     list2 = list2.next;
-//   }
-//   return true;
-// };
+const compare = (list1, list2) => {
+  while (list1 && list2) {
+    if (list1.val !== list2.val) {
+      return false;
+    }
+    list1 = list1.next;
+    list2 = list2.next;
+  }
+  return true;
+};
 
-// const isPalindrome = (head) => {
-//   const midPoint = findMidPoint(head);
-//   const tail = reverse(midPoint);
-//   return compare(head, tail);
-// };
+const isPalindrome = (head) => {
+  const midPoint = findMidPoint(head);
+  const tail = reverse(midPoint);
+  return compare(head, tail);
+};
 
 // 206. reverse link list
 // Given the head of a singly linked list, reverse the list, and return the reversed list.
@@ -301,6 +301,21 @@ const permute1 = (nums, start = 0, result = []) => {         // in this case we'
 
 //     The number of nodes in the list is the range [0, 5000].
 //     -5000 <= Node.val <= 5000
+
+solution -> linear time complexity
+
+const reverseList = (head) => {
+    let previous = null
+    let current = head
+    while (current) {
+        const next = current.next
+        current.next = previous
+        previous = current
+        current = next
+    }
+    return previous
+};
+
 
 
 // 167. Two Sum 2 | Input array is sorted

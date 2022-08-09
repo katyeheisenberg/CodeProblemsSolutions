@@ -402,3 +402,14 @@ const subsets = (nums) => {
   return result;
 };
 
+// solution (recursive)
+
+const subsets1 = (nums, depth = 0, subset = [], results = []) => {
+  if (depth === nums.length) {
+    results.push(subset);
+  } else {
+    subsets1(nums, depth + 1, subset, results);
+    subsets1(nums, depth + 1, [...subset, nums[depth]], results);
+  }
+  return results;
+};

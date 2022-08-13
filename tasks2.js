@@ -27,3 +27,73 @@
 //     1 <= m, n <= 300
 //     grid[i][j] is '0' or '1'.
 
+// solution <- actually it doesnt work in leetcode as it throws type error for array deconstructions i,j fron currNode in while loop in dFS func
+// however it runs locally on the node serveer and in the leetcode's tests
+const grid1 = [
+  ["1", "1", "1", "1", "0"],
+  ["1", "1", "0", "1", "0"],
+  ["1", "1", "0", "0", "0"],
+  ["0", "0", "0", "0", "0"],
+];
+const grid2 = [
+  ["1", "1", "0", "0", "0"],
+  ["1", "1", "0", "0", "0"],
+  ["0", "0", "1", "0", "0"],
+  ["0", "0", "0", "1", "1"],
+];
+const getAdjN = (i, j, grid, visited) => {
+  const aN = [];
+
+  if (i > 0 && !visited[i - 1][j]) {
+    aN.push([i - 1], j);
+  }
+  if (i < grid.length - 1 && !visited[i + 1][j]) {
+    aN.push([i + 1, j]);
+  }
+
+  if (j > 0 && !visited[i][j - 1]) {
+    aN.push([i, j - 1]);
+  }
+  if (j < grid[0].length - 1 && !visited[i][j + 1]) {
+    aN.push([i, j + 1]);
+  }
+
+  return aN;
+};
+const dFS = (i, j, grid, visited) => {
+  const stack = [[i, j]];
+  let size = 0;
+  while (stack.length) {
+    let currNode = stack.pop();
+    let [i, j] = currNode;
+
+    // check if visited at i and j
+    if (visited[i][j]) continue;
+    visited[i][j] = true;
+
+    // check if cell is part of an island
+    if (grid[i][j] === "0") continue;
+    size += 1;
+
+    let adjNeighbors = getAdjN(i, j, grid, visited);
+    stack.push(...adjNeighbors);
+  }
+
+  return size > 0 ? true : false;
+};
+
+const numIslands = (grid) => {
+  const visited = grid.map((row) => row.map((cell) => false));
+  let islandCount = 0;
+  for (let i = 0; i < grid.length; i += 1) {
+    for (let j = 0; j < grid[i].length; j += 1) {
+      if (dFS(i, j, grid, visited)) {
+        islandCount += 1;
+      }
+    }
+  }
+
+  return islandCount;
+};
+console.log(numIslands(grid1))
+console.log(numIslands(grid2));

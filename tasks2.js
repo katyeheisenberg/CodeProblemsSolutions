@@ -97,3 +97,28 @@ const numIslands = (grid) => {
 };
 console.log(numIslands(grid1))
 console.log(numIslands(grid2));
+
+// another solution
+const teraform = (i, j, grid) => {
+    if(grid[i] === undefined || grid[i][j] === undefined || grid[i][j] === '0') return;
+    grid[i][j] = '0'
+    teraform(i + 1, j, grid)
+    teraform(i - 1, j, grid)
+    teraform(i, j + 1, grid)
+    teraform(i, j - 1, grid)
+}
+
+const numIslands2 = (grid) => {
+    let islandCount = 0
+    for(let i = 0; i < grid.length; i += 1) {
+        for(let j = 0; j < grid[i].length; j += 1) {
+            if(grid[i][j] === '1') {
+                islandCount += 1
+                teraform(parseInt(i), parseInt(j), grid)
+            }
+            }
+        }
+
+    return islandCount
+};
+console.log(numIslands2(grid1))

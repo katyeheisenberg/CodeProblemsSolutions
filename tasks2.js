@@ -95,30 +95,82 @@ const numIslands = (grid) => {
 
   return islandCount;
 };
-console.log(numIslands(grid1))
+console.log(numIslands(grid1));
 console.log(numIslands(grid2));
 
 // another solution
 const teraform = (i, j, grid) => {
-    if(grid[i] === undefined || grid[i][j] === undefined || grid[i][j] === '0') return;
-    grid[i][j] = '0'
-    teraform(i + 1, j, grid)
-    teraform(i - 1, j, grid)
-    teraform(i, j + 1, grid)
-    teraform(i, j - 1, grid)
-}
+  if (grid[i] === undefined || grid[i][j] === undefined || grid[i][j] === "0")
+    return;
+  grid[i][j] = "0";
+  teraform(i + 1, j, grid);
+  teraform(i - 1, j, grid);
+  teraform(i, j + 1, grid);
+  teraform(i, j - 1, grid);
+};
 
 const numIslands2 = (grid) => {
-    let islandCount = 0
-    for(let i = 0; i < grid.length; i += 1) {
-        for(let j = 0; j < grid[i].length; j += 1) {
-            if(grid[i][j] === '1') {
-                islandCount += 1
-                teraform(parseInt(i), parseInt(j), grid)
-            }
-            }
-        }
+  let islandCount = 0;
+  for (let i = 0; i < grid.length; i += 1) {
+    for (let j = 0; j < grid[i].length; j += 1) {
+      if (grid[i][j] === "1") {
+        islandCount += 1;
+        teraform(parseInt(i), parseInt(j), grid);
+      }
+    }
+  }
 
-    return islandCount
+  return islandCount;
 };
-console.log(numIslands2(grid1))
+console.log(numIslands2(grid1));
+
+// Longest substring without repeating characters 3.
+
+// Given a string s, find the length of the longest substring without repeating characters.
+
+// Example 1:
+// Input: s = "abcabcbb"
+// Output: 3
+// Explanation: The answer is "abc", with the length of 3.
+
+// Example 2:
+// Input: s = "bbbbb"
+// Output: 1
+// Explanation: The answer is "b", with the length of 1.
+
+// Example 3:
+// Input: s = "pwwkew"
+// Output: 3
+// Explanation: The answer is "wke", with the length of 3.
+// Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+
+// Constraints:
+//     0 <= s.length <= 5 * 104
+//     s consists of English letters, digits, symbols and spaces.
+
+const lengthOfLongestSubstring = (s) => {
+  // using sliding window pattern
+  let max = 0;
+  let windowStart = 0;
+  const soFar = {};
+
+  for (let windowEnd = 0; windowEnd < s.length; windowEnd += 1) {
+    let rightChar = s[windowEnd];
+    soFar[rightChar] = soFar[rightChar] + 1 || 1;
+
+    while (soFar[rightChar] > 1) {
+      let leftChar = s[windowStart];
+
+      if (soFar[leftChar] > 1) {
+        soFar[leftChar] -= 1;
+      } else {
+        delete soFar[leftChar];
+      }
+      windowStart += 1;
+    }
+    max = Math.max(max, windowEnd - windowStart + 1);
+  }
+  return max;
+};
+
+console.log(lengthOfLongestSubstring('sdfghjkqqq'))

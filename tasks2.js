@@ -174,3 +174,17 @@ const lengthOfLongestSubstring = (s) => {
 };
 
 console.log(lengthOfLongestSubstring('sdfghjkqqq'))
+
+// to find the shortest word
+// to create function which will find the first shortest word in the given string
+// Example:
+// Input: 'The mischievous dog is Jack'
+// Output: 'is'
+
+const findShortest = (str) => {
+  const splittedStr = str.split(' ') // -> to create array of words from string argument
+  const sortedWords = splittedStr.sort((a, b) => a.length - b.length) // to sort array in ascending way, we will sort each word by its length
+  return sortedWords[0] // we return the first element of sorted array of words, the shortest one
+}
+
+console.log(findShortest("The mischievous dog is Jack"));

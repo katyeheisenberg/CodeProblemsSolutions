@@ -188,3 +188,16 @@ const findShortest = (str) => {
 }
 
 console.log(findShortest("The mischievous dog is Jack"));
+
+// Find the highest and the lowest nummber in the array
+// to create a function whicj will find hichest and lowest numbers in the array
+// if array contains only one number the function must return two same values
+// Example:
+// Input: [1, 2, -2, 6, 87]
+// Output: [-2, 87]
+
+const findMM = (arr) => {
+  return [Math.min(...arr), Math.max(...arr)]
+}
+
+console.log(findMM([1, 2, -2, 6, 87]));

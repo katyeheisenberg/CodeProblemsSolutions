@@ -95,3 +95,26 @@ const isPalindrom = (word) => {
 }
 
 console.log(isPalindrom(word)) // expect true
+
+// Palindrom2
+// Check if we delete or remove one symbol from the given wrod would it be a palindrom
+
+const word2 = "abraa23rba67767677";
+
+const palindrom2 = (word2, n = 0) => {
+  for (let i = 0; i < word2.length; i += 1) {
+    if (word2[i] !== word2[word2.length - 1 - i] && n === 0) {
+      const res1 = palindrom2(word2.slice(i + 1, word2.length - 1 - i), n + 1)
+      const res2 = palindrom2(word2.slice(i, word2.length - 2 - i), n + 1);
+      return res1 || res2
+    }
+
+    if (word2[i] !== word2[word2.length - 1 - i] && n === 1) {
+      return false
+    }
+
+    return true;
+  }
+}
+
+console.log(palindrom2(word2)) // expect false

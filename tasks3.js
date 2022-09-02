@@ -77,4 +77,21 @@ const isValidSudoku = function(board) {
     return true
 }
 
-console.log(isValidSudoku(board))
+console.log(isValidSudoku(board)) // expect fale
+
+
+// Palindrom function
+// We need to create a function which will check if the word reads from left to right same as from right to left
+
+const word = 'aabbaa'
+
+const isPalindrom = (word) => {
+  for (let i = 0; i < word.length / 2; i += 1) {
+    if (word[i] !== word[word.length - 1 - i]) {
+      return false
+    }
+    return true
+  }
+}
+
+console.log(isPalindrom(word)) // expect true

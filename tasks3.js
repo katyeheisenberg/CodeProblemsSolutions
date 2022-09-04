@@ -118,3 +118,22 @@ const palindrom2 = (word2, n = 0) => {
 }
 
 console.log(palindrom2(word2)) // expect false
+
+
+// Minimum number of symbols
+// Create a function which will return the minima number of symbols that must be deleted in order to get a palindrome word
+
+const word3 = 'aaabbaaa099'
+
+const minSym = (word3, n = 0) => {
+  for (let i = 0; i < word3.length / 2; i += 1) {
+    if (word3[i] !== word3[word3.length - 1 - i]) {
+      const res1 = minSym(word3.slice(i + 1, word3.length - 1 - i), n + 1);
+      const res2 = minSym(word3.slice(i, word3.length - 2 - i), n + 1);
+      return Math.min(res1, res2);
+    }
+ }
+ return n;
+}
+
+console.log(minSym(word3)) // expect 3

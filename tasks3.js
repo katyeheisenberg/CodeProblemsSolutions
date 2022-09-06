@@ -137,3 +137,22 @@ const minSym = (word3, n = 0) => {
 }
 
 console.log(minSym(word3)) // expect 3
+
+
+// Palindrome
+// Another solution
+
+const word4 = "abrqaarba";
+
+const palFunc = (word4) => {
+  let backward = '';
+  let index = word4.length - 1;
+
+  while (index >= 0) {
+    backward += word4[index]
+    index -= 1
+  }
+  return word4.toLocaleLowerCase() === backward.toLocaleLowerCase()
+}
+
+console.log(palFunc(word4)) // expect false

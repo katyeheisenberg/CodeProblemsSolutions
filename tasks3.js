@@ -156,3 +156,41 @@ const palFunc = (word4) => {
 }
 
 console.log(palFunc(word4)) // expect false
+
+
+// Palindrom2 (another solution)
+// Check if we delete or remove one symbol from the given wrod would it be a palindrom
+
+const word5 = "abraarba";
+
+const pal2Func = (word5) => {
+  const isTheSame = (text) => {
+    let backward = "";
+    let index = text.length - 1;
+
+    while (index >= 0) {
+      backward += text[index];
+      index -= 1;
+    }
+    return text.toLowerCase() === backward.toLowerCase();
+  };
+
+  if (isTheSame(word5)) {
+    return true;
+  }
+
+  let index = 1;
+  let result = false;
+
+  while (index <= word5.length) {
+    result = isTheSame(word5.slice(0, index - 1) + word5.slice(index));
+    if (result) {
+      break;
+    }
+    index += 1;
+  }
+
+  return result;
+}
+
+console.log(pal2Func(word5)) // expect true

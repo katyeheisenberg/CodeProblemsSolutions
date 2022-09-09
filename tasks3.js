@@ -194,3 +194,34 @@ const pal2Func = (word5) => {
 }
 
 console.log(pal2Func(word5)) // expect true
+
+// Palindrome task number 4(sk solution)
+// create a function wich will return the number of letters that must be deleted to get palindrom word.
+// the function has to work with words written in lower and in upper case similarly
+
+const word6 = "Abrar2341ba";
+
+const isPlaindrom4 = (word6, count = 0) => {
+let str = word6.toLowerCase()
+
+if(count > 0) {
+  const str1 = str.slice(0, str.length - 1)
+  const str2 = str.slice(1)
+
+  const count1 = isPlaindrom4(str1)
+  const count2 = isPlaindrom4(str2)
+
+  str = count1 < count2 ? str1 : str2
+}
+
+for (let i = 0; i < str.length; i += 1) {
+  if(str[i] !== str[str.length - 1 - i]) {
+    count += 1
+    const slicedStr = str.slice(i, str.length - i)
+    return isPlaindrom4(slicedStr, count);
+  }
+}
+return count
+}
+
+console.log(isPlaindrom4(word6))  // expect 4

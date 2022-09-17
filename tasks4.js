@@ -4,6 +4,8 @@
 // Input: abc, abracadabra
 // Output: true
 
+const { moveSyntheticComments } = require("typescript");
+
 const checkTheOrder = (subs, string) => {
   let count = 0;
   let index = 0;
@@ -127,3 +129,16 @@ function titleCase(title, minorWords) {
 }
 
 console.log(titleCase("THE WIND IN THE WILLOWS", "The In")); // expect 'The Wind in the Willows'
+
+// Number of vowels
+// Ur function should return a number of vowels in the given string
+
+const findVowels = (word) => {
+  const matches = word.match(/[aeiouy]/gi)
+  return matches ? matches.length : 0
+}
+
+console.log(findVowels('Sunny oister and me')) // expect 7
+console.log(findVowels('apple')) // expect 2
+
+

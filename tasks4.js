@@ -4,7 +4,7 @@
 // Input: abc, abracadabra
 // Output: true
 
-const { moveSyntheticComments } = require("typescript");
+// const { moveSyntheticComments } = require("typescript");
 
 const checkTheOrder = (subs, string) => {
   let count = 0;
@@ -142,3 +142,17 @@ console.log(findVowels('Sunny oister and me')) // expect 7
 console.log(findVowels('apple')) // expect 2
 
 
+// Factorial
+// To execute factorial of number not using recursion method
+
+const factorial = (nmb) => {
+  let result = 1
+  while(nmb > 1) {
+    result = result * nmb
+    nmb -= 1
+  }
+  return result;
+}
+
+console.log(factorial(5)) // expect 120
+console.log(factorial(9)) // expect 362880

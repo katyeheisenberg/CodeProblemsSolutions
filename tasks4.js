@@ -156,3 +156,35 @@ const factorial = (nmb) => {
 
 console.log(factorial(5)) // expect 120
 console.log(factorial(9)) // expect 362880
+
+// Function that should merge all the given arrays that are placed in one array and to sort all the numbers from them
+const arr = [[1, 5, 7, 20], [3, 100, 110], [6, 13, 28]]
+const merge = (arg1, arg2) => {
+  let count = 0
+  let count2 = 0
+  let result = []
+  for(let i = 0; i < arg1.length + arg2.length; i += 1) {
+    if (count === arg1.length) {
+      result.push(arg2[count2])
+      count2 += 1
+      continue
+    }
+    if (count2 === arg2.length) {
+      result.push(arg1[count])
+      count += 1
+      continue
+    }
+    if (arg1[count] <= arg2[count2]) {
+      result.push(arg1[count])
+      count += 1
+      continue
+    }
+    result.push(arg2[count2])
+    count2 += 1
+  }
+  return result
+}
+
+const sortedArr = arr.reduce((acc, rec) => merge(acc, rec))
+
+console.log(sortedArr) // expect 1,3,5,6,7,13,20,28,100,110

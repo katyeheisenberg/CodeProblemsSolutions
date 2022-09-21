@@ -188,3 +188,15 @@ const merge = (arg1, arg2) => {
 const sortedArr = arr.reduce((acc, rec) => merge(acc, rec))
 
 console.log(sortedArr) // expect 1,3,5,6,7,13,20,28,100,110
+
+// Find the biggest number in the array with arrays
+
+const array = [[1,3,42,3432222,13], [22323, 11, 343443222, 49999999993, 233], [12,434,3333,34]]
+
+const result = (array) => {
+  return array.map((it) => {
+    return it.reduce((acc, rec) => Math.max(acc, rec))
+  }).reduce((acc, rec) => Math.max(acc, rec))
+}
+
+console.log(result(array)) // expect 49999999993

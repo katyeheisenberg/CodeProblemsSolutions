@@ -217,3 +217,15 @@ const findWord = (element, wordArray) => {
 
 console.log(findWord('e', wordArray)) // expect fresh, lemon, horse, maverick
 
+// To count the number of word in the given array
+
+const nmbArrWord = (arr) => {
+  return arr.reduce((acc, rec) => {
+    return {
+      ...acc,
+      [rec]: (acc[rec] ?? 0) + 1
+    }
+  }, {})
+}
+
+console.log(nmbArrWord(['apple', 'appleJuice', 'brownie', 'sledges', 'furry', 'apple'])) // expect { apple: 2, appleJuice: 1, brownie: 1, sledges: 1, furry: 1 }

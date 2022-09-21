@@ -200,3 +200,20 @@ const result = (array) => {
 }
 
 console.log(result(array)) // expect 49999999993
+
+// Find specific word in the array
+
+const wordArray = ['fresh', 'lemon', 'horse', 'soap', 'maverick']
+
+const findWord = (element, wordArray) => {
+  return wordArray.reduce((acc, rec) => {
+    if(acc === '') return rec
+    if(rec.includes(element)) {
+      return `${acc}, ${rec}`
+    }
+    return acc
+  }, '')
+}
+
+console.log(findWord('e', wordArray)) // expect fresh, lemon, horse, maverick
+

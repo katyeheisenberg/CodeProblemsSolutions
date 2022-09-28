@@ -229,3 +229,29 @@ const nmbArrWord = (arr) => {
 }
 
 console.log(nmbArrWord(['apple', 'appleJuice', 'brownie', 'sledges', 'furry', 'apple'])) // expect { apple: 2, appleJuice: 1, brownie: 1, sledges: 1, furry: 1 }
+
+//To write a function which'll merge to arrays and return array with sorted numbers
+// Input: [1, 2, 3, 10, 11, 77], [6, 8, 23, 80]
+// Output: [1,  2,  3,  6,  8, 10, 11, 23, 77, 80 ]
+
+
+const foo = (a, b) => {
+  let res = []
+  let index1 = 0
+  let index2 = 0
+  while(res.length < a.length + b.length) {
+    if(a[index1] >= b[index2]) {
+      res = [...res, b[index2]]
+      index2 += 1
+    } else {
+    res = [...res, a[index1]]
+    index1 += 1
+    }
+     if (index1 === a.length) {
+      res = [...res, b[index2]]
+      index2 += 1
+     }
+  }
+  return res
+}
+console.log(foo([1, 2, 3, 10, 11, 77], [6, 8, 23, 80])) // expect [1,  2,  3,  6,  8, 10, 11, 23, 77, 80 ]

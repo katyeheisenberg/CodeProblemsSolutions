@@ -1,1 +1,1 @@
-# In this repository I'll place problems that I've solved and their solutions.
+# Repository for code problem solutions

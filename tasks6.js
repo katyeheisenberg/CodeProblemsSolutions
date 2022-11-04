@@ -87,3 +87,41 @@ const robberFunc = (arr) => {
 
 console.log(robberFunc([2, 7, 9, 3, 1])); // expect 12
 console.log(robberFunc([1, 2, 3, 1])); // expect 4
+
+// 121. Best Time to Buy and Sell Stock
+// You are given an array prices where prices[i] is the price of a given stock on the ith day.
+// You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+// Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+// Example 1:
+// Input: prices = [7,1,5,3,6,4]
+// Output: 5
+// Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+// Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+
+// Example 2:
+// Input: prices = [7,6,4,3,1]
+// Output: 0
+// Explanation: In this case, no transactions are done and the max profit = 0.
+
+// Constraints:
+// 1 <= prices.length <= 105
+// 0 <= prices[i] <= 104
+
+const timeStockFunc = (arr) => {
+  let buyIndex = arr[0];
+  arr[0] = 0;
+  let profit = 0;
+  for(let i = 1; i < arr.length; i += 1) {
+    if(buyIndex > arr[i]) {
+      buyIndex = arr[i]
+      arr[i] = 0
+    } else {
+      profit = Math.max(arr[i] - buyIndex, profit)
+    }
+  }
+  return profit
+}
+
+console.log(timeStockFunc([7, 6, 4, 3, 1])); // expect 0
+console.log(timeStockFunc([7, 1, 5, 3, 6, 4])); // expect 5

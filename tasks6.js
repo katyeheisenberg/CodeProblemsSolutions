@@ -243,3 +243,34 @@ const isHappy = (n) => {
 
 console.log(isHappy(19)) // true
 console.log(isHappy(2)) // false
+
+
+
+
+// 340 leetcode problem
+const connections = (arr) => {
+  let map = {}
+  let start = 0
+  let max = 0
+  for (let i = 0; i < arr.length; i += 1) {
+    let end = arr[i]
+    map[arr[i]] = map[arr[i]] + 1 || 1
+    while (Object.keys(map).length > 2) {
+      let startRes = arr[start]
+      if(map[startRes] > 1) {
+        map[startRes] -= 1
+      } else {
+        delete map[startRes]
+      }
+      start += 1
+    }
+   max = Math.max(max, (i - start) + 1)
+  }
+  return max
+}
+
+// console.log(connections([7, 1, 4, 1, 9, 1, 1, 9, 1, 7, 9])) expect 6
+// console.log(connections([1, 2, 3, 4, 5])); expect 2
+// console.log(connections([5, 5, 5, 5, 5])) expect 5
+// console.log(connections([1, 2, 1, 1, 3, 1, 2, 1, 4])) expect 4
+// console.log(connections([1, 0, 0, 0, 0, 0, 0])) expect 7

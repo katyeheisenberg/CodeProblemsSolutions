@@ -200,7 +200,6 @@ const rotate = (nums, k) => {
 // Write an algorithm to determine if a number n is happy.
 
 // A happy number is a number defined by the following process:
-
 //     Starting with any positive integer, replace the number by the sum of the squares of its digits.
 //     Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1.
 //     Those numbers for which this process ends in 1 are happy.
@@ -208,7 +207,6 @@ const rotate = (nums, k) => {
 // Return true if n is a happy number, and false if not.
 
 // Example 1:
-
 // Input: n = 19
 // Output: true
 // Explanation:
@@ -248,6 +246,7 @@ console.log(isHappy(2)) // false
 
 
 // 340 leetcode problem
+
 const connections = (arr) => {
   let map = {}
   let start = 0
@@ -269,8 +268,45 @@ const connections = (arr) => {
   return max
 }
 
-// console.log(connections([7, 1, 4, 1, 9, 1, 1, 9, 1, 7, 9])) expect 6
-// console.log(connections([1, 2, 3, 4, 5])); expect 2
-// console.log(connections([5, 5, 5, 5, 5])) expect 5
-// console.log(connections([1, 2, 1, 1, 3, 1, 2, 1, 4])) expect 4
-// console.log(connections([1, 0, 0, 0, 0, 0, 0])) expect 7
+console.log(connections([7, 1, 4, 1, 9, 1, 1, 9, 1, 7, 9])) // expect 6
+console.log(connections([1, 2, 3, 4, 5])); // expect 2
+console.log(connections([5, 5, 5, 5, 5])) // expect 5
+console.log(connections([1, 2, 1, 1, 3, 1, 2, 1, 4])) // expect 4
+console.log(connections([1, 0, 0, 0, 0, 0, 0])) // expect 7
+
+
+// 1762. Buildings w Ocean view
+// There are n buildings in a line. You are given an integer array heights
+// of size n that represents the heights of the buildings in the line.
+// The ocean is to the right of the buildings.
+// A building has an ocean view if the building can see the ocean without obstructions.
+// Formally, a building has an ocean view if all the buildings to its right have a smaller height.
+// Return a list of indices (0-indexed) of buildings that have an ocean view, sorted in increasing order.
+
+// Example 1:
+// Input: heights = [4,2,3,1]
+// Output: [0,2,3]
+// Explanation: Building 1 (0-indexed) does not have an ocean view because building 2 is taller.
+
+// Example 2:
+// Input: heights = [4,3,2,1]
+// Output: [0,1,2,3]
+// Explanation: All the buildings have an ocean view.
+
+const arr = [4, 2, 3, 1];
+const arr2 = [4, 3, 2, 1];
+
+const ocean = (arr) => {
+  let endIndex = arr.length - 1;
+  let result = [endIndex];
+  for (let i = arr.length - 2; i >= 0; i -= 1) {
+    let currentB = arr[i]
+    let lastB = arr[result[result.length - 1]]
+    if(currentB > lastB) {
+      result = [...result, i]
+    }
+  }
+  return result.reverse()
+}
+console.log(ocean(arr)) // expect [0, 2, 3]
+console.log(ocean(arr2)) // expect [0, 1, 2, 3]

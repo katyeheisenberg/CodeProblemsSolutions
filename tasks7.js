@@ -26,3 +26,43 @@ const simplifyPath = (path) => {
 
 console.log(simplifyPath("/home/")); // expect "/home"
 console.log(simplifyPath("/home//foo/")); // expect "/home/foo"
+
+
+// 702. Search in a Sorted Array of Unknown Size
+// Given an integer array sorted in ascending order, write a function to search target in nums.
+// If target exists, then return its index, otherwise return -1.
+// However, the array size is unknown to you. You may only access the array using an ArrayReader interface,
+// where ArrayReader.get(k) returns the element of the array at index k (0-indexed).
+// You may assume all integers in the array are less than 10000, and if you access the array out of bounds, ArrayReader.get will return 2147483647.
+
+// Example 1:
+// Input: array = [-1,0,3,5,9,12], target = 9
+// Output: 4
+// Explanation: 9 exists in nums and its index is 4
+
+// Example 2:
+// Input: array = [-1,0,3,5,9,12], target = 2
+// Output: -1
+// Explanation: 2 does not exist in nums so return -1
+
+const findTarget = (arr, target) => {
+  let leftIndex = 0
+  let rightIndex = 1
+  while(arr[rightIndex] < target) {
+    leftIndex = rightIndex
+    rightIndex = rightIndex * 2
+  }
+  while(leftIndex <= rightIndex) {
+    let middle = Math.floor((leftIndex + rightIndex) / 2)
+    if (arr[middle] === target) return middle
+    if (arr[leftIndex] <= target && target < arr[middle]) {
+      rightIndex = middle - 1
+    } else {
+      leftIndex = middle + 1
+    }
+  }
+  return -1
+}
+
+console.log(findTarget([-1, 0, 3, 5, 9, 12], 9)) // expect 4
+console.log(findTarget([-1, 0, 3, 5, 9, 12], 2)); // expect -1

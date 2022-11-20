@@ -10,23 +10,24 @@
 //     The path does not end with a trailing '/'.
 //     The path only contains the directories on the path from the root directory to the target file or directory (i.e., no period '.' or double period '..')
 
-
 const simplifyPath = (path) => {
-    const result = []
-    const arrPath = path.split('/').filter((e) => e !== '.').filter((e) => e !== '');
-    for(element of arrPath) {
-        if(element === '..') {
-            result.pop()
-        } else {
-          result.push(element)
-        }
+  const result = [];
+  const arrPath = path
+    .split("/")
+    .filter((e) => e !== ".")
+    .filter((e) => e !== "");
+  for (element of arrPath) {
+    if (element === "..") {
+      result.pop();
+    } else {
+      result.push(element);
     }
-    return '/' + result.join('/')
+  }
+  return "/" + result.join("/");
 };
 
 console.log(simplifyPath("/home/")); // expect "/home"
 console.log(simplifyPath("/home//foo/")); // expect "/home/foo"
-
 
 // 702. Search in a Sorted Array of Unknown Size
 // Given an integer array sorted in ascending order, write a function to search target in nums.
@@ -46,23 +47,36 @@ console.log(simplifyPath("/home//foo/")); // expect "/home/foo"
 // Explanation: 2 does not exist in nums so return -1
 
 const findTarget = (arr, target) => {
-  let leftIndex = 0
-  let rightIndex = 1
-  while(arr[rightIndex] < target) {
-    leftIndex = rightIndex
-    rightIndex = rightIndex * 2
+  let leftIndex = 0;
+  let rightIndex = 1;
+  while (arr[rightIndex] < target) {
+    leftIndex = rightIndex;
+    rightIndex = rightIndex * 2;
   }
-  while(leftIndex <= rightIndex) {
-    let middle = Math.floor((leftIndex + rightIndex) / 2)
-    if (arr[middle] === target) return middle
+  while (leftIndex <= rightIndex) {
+    let middle = Math.floor((leftIndex + rightIndex) / 2);
+    if (arr[middle] === target) return middle;
     if (arr[leftIndex] <= target && target < arr[middle]) {
-      rightIndex = middle - 1
+      rightIndex = middle - 1;
     } else {
-      leftIndex = middle + 1
+      leftIndex = middle + 1;
     }
   }
-  return -1
+  return -1;
+};
+
+console.log(findTarget([-1, 0, 3, 5, 9, 12], 9)); // expect 4
+console.log(findTarget([-1, 0, 3, 5, 9, 12], 2)); // expect -1
+
+// 215. Kth Largest Element in an Array
+// Given an integer array nums and an integer k, return the kth largest element in the array.
+// Note that it is the kth largest element in the sorted order, not the kth distinct element.
+
+// O(n * log(n)) solution below
+
+const findKth = (nums, k) => {
+  nums.sort((a, b) => b - a)
+  return nums[k - 1]
 }
 
-console.log(findTarget([-1, 0, 3, 5, 9, 12], 9)) // expect 4
-console.log(findTarget([-1, 0, 3, 5, 9, 12], 2)); // expect -1
+console.log(findKth([3, 2, 1, 5, 6, 4], 2)); // expect 5

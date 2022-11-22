@@ -79,4 +79,23 @@ const findKth = (nums, k) => {
   return nums[k - 1]
 }
 
-console.log(findKth([3, 2, 1, 5, 6, 4], 2)); // expect 5
+
+function part(arr, from, to) {
+  let pivot = from
+  for(let i = from; i < to; i += 1) {
+    if(arr[i] > arr[to]) {
+      [arr[i], arr[pivot]] = [arr[pivot], arr[i]]
+      pivot += 1
+    }
+  }
+  [arr[pivot], arr[to]] = [arr[to], arr[pivot]]
+  return pivot
+}
+
+const findKth2 = (nums, k) => {     // O(N)
+  const idx = part(nums, 0, nums.length - 1)
+  if(idx === k - 1) return nums[idx]
+  if(idx < k) return findKth2(nums.slice(idx + 1), k - idx - 1)
+  return findKth2(nums.slice(0, idx), k)
+}
+console.log(findKth2([3, 2, 1, 5, 6, 4], 2)); // expect 5

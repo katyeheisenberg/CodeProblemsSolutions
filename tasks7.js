@@ -99,3 +99,31 @@ const findKth2 = (nums, k) => {     // O(N)
   return findKth2(nums.slice(0, idx), k)
 }
 console.log(findKth2([3, 2, 1, 5, 6, 4], 2)); // expect 5
+
+
+
+// Task from university
+
+const gi = (w1, w2) => {
+  let howManyLetters2ndWord = 0
+  let indexOfUselessLetter1stword = w1.length - 2 - howManyLetters2ndWord;
+  let firstpart = w1.slice(0,indexOfUselessLetter1stword)
+  for(let i = 0; i < w1.length; i += 1) {
+    if(w1[i] === w2[howManyLetters2ndWord]) {
+      howManyLetters2ndWord += 1
+    }
+    if(howManyLetters2ndWord === w1.length) {
+      return w2
+    }
+    if(howManyLetters2ndWord === 0) {
+      return `${w1}${w2}`
+    }
+    // console.log(howManyLetters2ndWord)
+
+  }
+  return `${firstpart}${w2}`;
+}
+console.log(gi('шлакоблок','окунь'))
+console.log(gi('папа','папаха'))
+console.log(gi('гора','радуга'))
+console.log(gi('груша','спичка'))

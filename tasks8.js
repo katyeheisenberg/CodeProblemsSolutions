@@ -62,7 +62,42 @@ const astroCollision = (arr) => {
 
 }
 
-console.log(astroCollision([5, 10, -5]
-  )); // excepted output would be equal to [10]
+// console.log(astroCollision([5, 10, -5]
+  // )); // excepted output would be equal to [10]
 // let a = [10, 2, -5]
 // console.log(a.pop); // excepted output would be equal to [10]
+
+
+
+// 867. Transpose Matrix
+// Given a 2D integer array matrix, return the transpose of matrix.
+// The transpose of a matrix is the matrix flipped over its main diagonal,
+// switching the matrix's row and column indices.
+// Example 1:
+// Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+// Output: [[1,4,7],[2,5,8],[3,6,9]]
+// ---------------------
+// Example 2:
+// Input: matrix = [[1,2,3],[4,5,6]]
+// Output: [[1,4],[2,5],[3,6]]
+// ---------------------
+// Constraints:
+// m == matrix.length
+// n == matrix[i].length
+// 1 <= m, n <= 1000
+// 1 <= m * n <= 105
+// -109 <= matrix[i][j] <= 109
+
+const transpose = (matrix) => {
+  const rows = matrix.length;
+  const columns = matrix[0].length;
+  let newMatrix = new Array(columns).fill(0).map((row) => new Array(rows).fill(0));
+   for (let i = 0; i < rows; i+= 1) {
+        for (let j = 0; j < columns; j+= 1) {
+            newMatrix[j][i] = matrix[i][j];
+        }
+    }
+    return newMatrix
+};
+
+console.log(transpose([[1,2,3],[4,5,6],[7,8,9]]));

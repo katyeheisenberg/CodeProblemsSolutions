@@ -144,3 +144,22 @@ console.log(
 //   [ 12, 6, 8, 9 ],
 //   [ 16, 7, 10, 11 ]
 // ]
+
+// 217. Contains Duplicate
+// Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+// Constraints:
+// 1 <= nums.length <= 105
+// - 10*9 <= nums[i] <= 10*9;
+
+const containsDuplicate = function (nums) {
+  let seen = [];
+  for (let i = 0; i < nums.length; i += 1) {
+    if (seen.indexOf(nums[i]) >= 0) {
+      return true;
+    }
+    seen = [...seen, nums[i]];
+  }
+  return false
+};
+
+console.log(containsDuplicate([1, 2, 3, 4])); // --> expect false

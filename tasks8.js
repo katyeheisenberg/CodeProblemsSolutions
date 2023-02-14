@@ -30,42 +30,36 @@
 //     -1000 <= asteroids[i] <= 1000
 //     asteroids[i] != 0
 
-
 const astroCollision = (arr) => {
   let res = [];
   for (let i = 0; i < arr.length; i += 1) {
-    if(res.length === 0 || arr[i] > 0) {
+    if (res.length === 0 || arr[i] > 0) {
       res.push(arr[i]);
     } else {
-      while(true) {
+      while (true) {
         let last = res[res.length - 1];
-        if(last < 0) {
+        if (last < 0) {
           res.push(arr[i]);
           break;
-        } else if(last === -arr[i]) {
+        } else if (last === -arr[i]) {
           res.pop();
           break;
-        } else if(last > -arr[i]) {
+        } else if (last > -arr[i]) {
           break;
         } else {
           res.pop();
-          if(res.length === 0) {
+          if (res.length === 0) {
             res.push[arr[i]];
             break;
           }
         }
       }
     }
-
   }
   return res;
+};
 
-}
-
-console.log(astroCollision([5, 10, -5]
-  )); // excepted output would be equal to [10]
-
-
+console.log(astroCollision([5, 10, -5])); // excepted output would be equal to [10]
 
 // 867. Transpose Matrix
 // Given a 2D integer array matrix, return the transpose of matrix.
@@ -89,17 +83,24 @@ console.log(astroCollision([5, 10, -5]
 const transpose = (matrix) => {
   const rows = matrix.length;
   const columns = matrix[0].length;
-  let newMatrix = new Array(columns).fill(0).map((row) => new Array(rows).fill(0));
-   for (let i = 0; i < rows; i+= 1) {
-        for (let j = 0; j < columns; j+= 1) {
-            newMatrix[j][i] = matrix[i][j];
-        }
+  let newMatrix = new Array(columns)
+    .fill(0)
+    .map((row) => new Array(rows).fill(0));
+  for (let i = 0; i < rows; i += 1) {
+    for (let j = 0; j < columns; j += 1) {
+      newMatrix[j][i] = matrix[i][j];
     }
-    return newMatrix
+  }
+  return newMatrix;
 };
 
-console.log(transpose([[1,2,3],[4,5,6],[7,8,9]]));
-
+console.log(
+  transpose([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ])
+);
 
 // 48. Rotate Image
 // You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
@@ -111,7 +112,6 @@ console.log(transpose([[1,2,3],[4,5,6],[7,8,9]]));
 //   1 <= n <= 20
 //   - 1000 <= matrix[i][j] <= 1000;
 
-
 const rotateImg = (matrix) => {
   const length = matrix.length;
   for (let i = 0; i < length; i += 1) {
@@ -119,10 +119,10 @@ const rotateImg = (matrix) => {
       const refMatrix = matrix[i][j];
       matrix[i][j] = matrix[j][i];
       matrix[j][i] = refMatrix;
-    };
+    }
   }
-  for(let i = 0; i < length; i+= 1) {
-    for(let j = 0; j < (length / 2); j += 1) {
+  for (let i = 0; i < length; i += 1) {
+    for (let j = 0; j < length / 2; j += 1) {
       const refMatrix = matrix[i][j];
       matrix[i][j] = matrix[i][length - 1 - j];
       matrix[i][length - 1 - j] = refMatrix;
@@ -159,7 +159,7 @@ const containsDuplicate = function (nums) {
     }
     seen = [...seen, nums[i]];
   }
-  return false
+  return false;
 };
 
 console.log(containsDuplicate([1, 2, 3, 4])); // --> expect false
@@ -194,3 +194,28 @@ const findDisappearedNumbers = function (nums) {
 };
 
 console.log(findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1])); // --> expect [5, 6]
+
+// 70. Climbing Stairs
+// You are climbing a staircase. It takes n steps to reach the top.
+// Each time you can either climb 1 or 2 steps.
+// In how many distinct ways can you climb to the top?
+// Constraints:
+//     1 <= n <= 45
+
+const climbStairs = (n) => {
+  if (n < 4) {
+    return n;
+  }
+  let n1 = 1;
+  let n2 = 1;
+  let res = 0;
+  for (let i = 2; i <= n; i += 1) {
+    res = n1 + n2;
+    n1 = n2;
+    n2 = res;
+  }
+  return res;
+};
+
+console.log(climbStairs(5)) // expect --> 8
+console.log(climbStairs(9)) // expect --> 55

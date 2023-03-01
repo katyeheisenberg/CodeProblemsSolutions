@@ -31,4 +31,16 @@ const hasCycle = function (head) {
   return false;
 };
 
+function reverse(word) {
+    let backwards = '';
+    let index = word.length - 1;
+    while(index >= 0) {
+      backwards += word[index]
+      index -= 1;
+    }
+    return backwards
+  };
 
+  console.log(reverse('streee'))
+
+// Valid 

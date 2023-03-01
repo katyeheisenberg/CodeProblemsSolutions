@@ -151,29 +151,29 @@ console.log(numIslands2(grid1));
 const lengthOfLongestSubstring = (s) => {
   // using sliding window pattern
   let max = 0;
-  let windowStart = 0;
-  const soFar = {};
+  let begin = 0;
+  const map = {};
 
-  for (let windowEnd = 0; windowEnd < s.length; windowEnd += 1) {
-    let rightChar = s[windowEnd];
-    soFar[rightChar] = soFar[rightChar] + 1 || 1;
+  for (let end = 0; end < s.length; end += 1) {
+    let rightChar = s[end];
+    map[rightChar] = map[rightChar] + 1 || 1;
 
-    while (soFar[rightChar] > 1) {
-      let leftChar = s[windowStart];
+    while (map[rightChar] > 1) {
+      let leftChar = s[begin];
 
-      if (soFar[leftChar] > 1) {
-        soFar[leftChar] -= 1;
+      if (map[leftChar] > 1) {
+        map[leftChar] -= 1;
       } else {
-        delete soFar[leftChar];
+        delete map[leftChar];
       }
-      windowStart += 1;
+      begin += 1;
     }
-    max = Math.max(max, windowEnd - windowStart + 1);
+    max = Math.max(max, end - begin + 1);
   }
   return max;
 };
 
-console.log(lengthOfLongestSubstring('sdfghjkqqq'))
+console.log(lengthOfLongestSubstring('sdfsghjkqqq'), 'Longest substring')
 
 // to find the shortest word
 // to create function which will find the first shortest word in the given string
@@ -201,3 +201,51 @@ const findMM = (arr) => {
 }
 
 console.log(findMM([1, 2, -2, 6, 87]));
+
+
+// 20. Valid Parentheses
+// Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+// An input string is valid if:
+//     Open brackets must be closed by the same type of brackets.
+//     Open brackets must be closed in the correct order.
+//     Every close bracket has a corresponding open bracket of the same type.
+// Constraints:
+
+//     1 <= s.length <= 104
+//     s consists of parentheses only '()[]{}'.
+
+const isValid = function (string) {
+  let stack = [];
+  let dict = {
+    "(": ")",
+    "[": "]",
+    "{": "}",
+  };
+  let dict2 = Object.keys(dict).reduce((acc, rec) => {
+    return { ...acc, [dict[rec]]: rec };
+  }, {}); // reversed version of our dictionary of parentheses
+
+  for (let i = 0; i < string.length; i += 1) {
+    let symb = string[i];
+    if (typeof dict[symb] !== "undefined") {
+      // if we have a current symbol in our dictionary
+      stack.push(symb);
+      continue;
+    }
+
+    if (typeof dict2[symb] !== "undefined") {
+      // if we have next symbol (closing parenthesis) in our reversed dictionary
+      const openSymbol = stack.pop();
+      if (dict[openSymbol] !== symb) {
+        return false;
+        break;
+      }
+    }
+  }
+  if (stack.length !== 0) {
+    return false;
+  }
+  return true;
+};
+console.log(isValid("(]")); // expect to be equal to false
+console.log(isValid("()[]{}")); // expect to be equal to true

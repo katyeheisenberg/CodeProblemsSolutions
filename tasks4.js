@@ -4,7 +4,6 @@
 // Input: abc, abracadabra
 // Output: true
 
-// const { moveSyntheticComments } = require("typescript");
 
 const checkTheOrder = (subs, string) => {
   let count = 0;

@@ -31,6 +31,9 @@ const hasCycle = function (head) {
   return false;
 };
 
+
+// The reverse function which reverses string
+
 function reverse(word) {
     let backwards = '';
     let index = word.length - 1;
@@ -42,5 +45,3 @@ function reverse(word) {
   };
 
   console.log(reverse('streee'))
-
-// Valid 

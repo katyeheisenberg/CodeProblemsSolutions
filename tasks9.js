@@ -45,3 +45,29 @@ function reverse(word) {
   };
 
   console.log(reverse('streee'))
+
+
+
+// 203. Remove Linked List Elements
+// Given the head of a linked list and an integer val,
+// remove all the nodes of the linked list that has Node.val == val, and return the new head.
+
+// Constraints:
+//     The number of nodes in the list is in the range [0, 104].
+//     1 <= Node.val <= 50
+//     0 <= val <= 50
+
+
+const removeElements = function(head, val) {  //TC = 0(1) SC = 0(N)
+    let edgeNode = new ListNode(-1, head);
+    let current = edgeNode;
+
+    while(current.next !== null) {
+        if(current.next.val === val) {
+            current.next = current.next.next
+        } else {
+            current = current.next
+        }
+    }
+    return edgeNode.next
+};

@@ -71,3 +71,77 @@ const removeElements = function(head, val) {  //TC = 0(1) SC = 0(N)
     }
     return edgeNode.next
 };
+
+const foo = (nmb) => {
+  let result = nmb;
+  return {
+    add(int) {
+      result += int
+      return this
+    },
+    sub(int) {
+      result -= int
+      return this
+    },
+    mul(int) {
+      result = result * int
+      return this
+    },
+    div(int) {
+      result = result / int
+      return this
+    },
+    val() {
+      return result
+    }
+  }
+}
+const calc = foo(0);
+console.log(calc.add(5).mul(4).div(10).sub(1).val())
+
+
+// 34. Find First and Last Position of Element in Sorted Array
+// Given an array of integers nums sorted in non-decreasing order,
+// find the starting and ending position of a given target value.
+// If target is not found in the array, return [-1, -1].
+// Constraints:
+//     0 <= nums.length <= 105
+//     -109 <= nums[i] <= 109
+//     nums is a non-decreasing array.
+//     -109 <= target <= 109
+const nums = [1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9];
+const target = 4;
+
+const searchRange = function (nums, target) {
+  return [getF(nums, target), getL(nums, target)];
+};
+
+function getF(nums, target) {
+  let left = -1;
+  let right = nums.length;
+  while (right - left > 1) {
+    const mid = Math.floor((left + right) / 2);
+    if (target <= nums[mid]) {
+      right = mid;
+    } else {
+      left = mid;
+    }
+  }
+  return nums[right] === target ? right : -1;
+}
+
+function getL(nums, target) {
+  let left = -1;
+  let right = nums.length;
+  while (right - left > 1) {
+    const mid = Math.floor((left + right) / 2);
+    if (target >= nums[mid]) {
+      left = mid;
+    } else {
+      right = mid;
+    }
+  }
+  return nums[left] === target ? left : -1;
+}
+
+console.log(searchRange(nums, target)) // expect -> [3, 11]

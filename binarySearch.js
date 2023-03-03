@@ -13,8 +13,8 @@ const binarySearch = (arr, searchNmb) => {
   let right = arr.length;
   while (right - left > 1) {
     const middle = Math.floor((left + right) / 2);
-    if (searchNmb === arr[middle]) {
-      return middle;
+    if (searchNmb === middle) {
+      return arr[middle];
     };
     if (searchNmb < arr[middle]) {
       right = middle;
@@ -25,8 +25,4 @@ const binarySearch = (arr, searchNmb) => {
   return false
 };
 
-console.log(binarySearch([2, 4, 6, 18, 20, 21, 30, 33, 34], 18)); // expect -> 3
-console.log(binarySearch([2, 4, 6, 18, 20, 21, 30, 33, 34], 30)); // expect -> 6
-console.log(binarySearch([2], 2)); // expect -> 0
-console.log(binarySearch([ 1, 2 ], 2)); // expect -> 1
-console.log(binarySearch([ 1 ], 2)); // expect -> false
+console.log(binarySearch([2, 4, 6, 15, 19, 22, 42, 114], 19));

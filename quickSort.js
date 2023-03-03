@@ -3,7 +3,7 @@
 // There are many different versions of quickSort that pick pivot in different ways.
 // Worst time complexity = O(N * N), normal time complexity = O(log N * N)
 
-const arr = [3, 2, 1, 5, 3, 11, 0];
+const arr = [3, 2, 1, 5, 3, 11, 0, 333, -1, -99];
 
 const quickSort = (arr) => { // <--- This code example wrote without any mutations
   if (arr.length < 2) {
@@ -72,4 +72,4 @@ function partition(arr, left, right) {
   return left
 };
 
-console.log(quickSort2(arr)); // expect -> [ 0, 1,  2, 3, 3, 5, 11 ]
+// console.log(quickSort2(arr)); // expect -> [ 0, 1,  2, 3, 3, 5, 11 ]

@@ -161,3 +161,28 @@ const slice = (str, int) => {
 };
 
 console.log(slice('abababababababab', 5))
+
+
+// You're given an array and a number. Write a function which will return an array with two numbers from the given array whose summary will be equal to a given number.
+// In case there're no such numbers - return emptu array
+// Optimal solution: TC=O(N), SC=0(1)
+
+const findSum = (arr, n) => {
+  let right = arr.length - 1;
+  let left = 0;
+  while(left <= right) {
+    let sum = arr[left] + arr[right];
+    if (sum === n) {
+      return [arr[left], arr[right]]
+    }
+    if(sum < n) {
+      left += 1
+    } else {
+      right -= 1
+    }
+  }
+  return []
+};
+
+console.log(findSum([-3, 0, 1, 3, 4], 5)) // expect -> [1, 4]
+console.log(findSum([-3, 0, 1, 3, 4, 5], 6)) // expect [1, 5]

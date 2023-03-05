@@ -9,12 +9,12 @@
 // Thus, binary search is extremely useful when we need to find exact person, telephone number or the name of the book.
 
 const binarySearch = (arr, searchNmb) => {
-  let left = -1;
-  let right = arr.length;
-  while (right - left > 1) {
+  let left = 0;
+  let right = arr.length - 1;
+  while (right > left) {
     const middle = Math.floor((left + right) / 2);
-    if (searchNmb === middle) {
-      return arr[middle];
+    if (searchNmb === arr[middle]) {
+      return middle;
     };
     if (searchNmb < arr[middle]) {
       right = middle;
@@ -25,4 +25,4 @@ const binarySearch = (arr, searchNmb) => {
   return false
 };
 
-console.log(binarySearch([2, 4, 6, 15, 19, 22, 42, 114], 19));
+console.log(binarySearch([2, 4, 6, 15, 19, 22, 42, 114], 2));

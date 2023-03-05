@@ -69,3 +69,4 @@ const inorderSuccessor = (root, p) => {
 }
 
 console.log(inorderSuccessor([2, 1, 3], p = 1))
+

@@ -117,8 +117,8 @@ const searchRange = function (nums, target) {
 };
 
 function getF(nums, target) {
-  let left = -1;
-  let right = nums.length;
+  let left = 0;
+  let right = nums.length - 1;
   while (right - left > 1) {
     const mid = Math.floor((left + right) / 2);
     if (target <= nums[mid]) {
@@ -131,8 +131,8 @@ function getF(nums, target) {
 }
 
 function getL(nums, target) {
-  let left = -1;
-  let right = nums.length;
+  let left = 0;
+  let right = nums.length - 1;
   while (right - left > 1) {
     const mid = Math.floor((left + right) / 2);
     if (target >= nums[mid]) {
@@ -145,3 +145,19 @@ function getL(nums, target) {
 }
 
 console.log(searchRange(nums, target)) // expect -> [3, 11]
+
+
+// Given a string and a number.
+// Return array with strings from a original one. Note that the length of each string must me equal to the given number or less.
+
+const slice = (str, int) => {
+  return str.split('').reduce((acc, letter) => {
+    if(acc[acc.length - 1].length < int) {
+      acc[acc.length - 1] += letter
+      return acc
+    }
+    return [...acc, letter]
+  }, [''])
+};
+
+console.log(slice('abababababababab', 5))

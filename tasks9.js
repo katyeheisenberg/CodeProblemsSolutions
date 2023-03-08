@@ -186,3 +186,54 @@ const findSum = (arr, n) => {
 
 console.log(findSum([-3, 0, 1, 3, 4], 5)) // expect -> [1, 4]
 console.log(findSum([-3, 0, 1, 3, 4, 5], 6)) // expect [1, 5]
+
+// 1491. Average Salary Excluding the Minimum and Maximum Salary
+// You are given an array of unique integers salary where salary[i] is the salary of the ith employee.
+// Return the average salary of employees excluding the minimum and maximum salary.
+// Answers within 10-5 of the actual answer will be accepted.
+
+// Input: salary = [4000,3000,1000,2000]
+// Output: 2500.00000
+// Explanation: Minimum salary and maximum salary are 1000 and 4000 respectively.
+// Average salary excluding minimum and maximum salary is (2000+3000) / 2 = 2500
+
+// Constraints:
+//     3 <= salary.length <= 100
+//     1000 <= salary[i] <= 106
+//     All the integers of salary are unique.
+
+const quickSort = (arr) => {
+  if (arr.length < 2) {
+    return arr;
+  }
+
+  const middleIndex = Math.floor(arr.length / 2);
+  const pivot = arr[middleIndex];
+  let less = [];
+  let greater = [];
+
+  for (let i = 0; i < arr.length; i += 1) {
+    if (i === middleIndex) {
+      continue;
+    }
+    if (arr[i] <= pivot) {
+      less = [...less, arr[i]];
+    } else {
+      greater = [...greater, arr[i]];
+    }
+  }
+
+  return [...quickSort(less), pivot, ...quickSort(greater)];
+};
+const average = (salary) => {
+  let sortedSalary = quickSort(salary);
+  sortedSalary.pop();
+  sortedSalary.shift();
+  let length = sortedSalary.length;
+  return sortedSalary.reduce((acc, rec) => {
+    return acc + rec / length;
+  }, 0);
+};
+
+console.log(average([1000, 5000, 4000, 2000])) // expect -> 3000
+console.log(average([1000, 5000, 6000, 9000, 4000, 2000])) // expect -> 4250

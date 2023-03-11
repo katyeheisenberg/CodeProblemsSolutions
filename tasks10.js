@@ -71,21 +71,20 @@ const findLeastNumOfUniqueInts2 = (arr, k) => {
   return new Set(arr.slice(k)).size;
 };
 
-// Given an array of integers which contains numbers. All numbers except one are represented in array three times.
-// Your task is to find a number which is not represented three times.
+// Given an array of integers which contains numbers. All numbers except one are represented in array n times.
+// Your task is to find a number which is not represented n amount of times.
 // Length of the array is divisible by its length - 1
 
-const notThree = (arr) => {
-  // const arr = [1, 3, 0, 3, 3, 1, 0, 7, 0, 1];
+const notThree = (arr, n) => {
   const m = {};
   for (let i = 0; i < arr.length; i += 1) {
     typeof m[arr[i]] === "undefined" ? (m[arr[i]] = 1) : (m[arr[i]] += 1);
   }
   for (let count in m) {
-    if (m[count] < 3) {
+    if (m[count] < n) {
       return count;
     }
   }
 };
-console.log(notThree([1, 3, 0, 3, 3, 1, 0, 7, 0, 1])); // -> Expect 7
-console.log(notThree([1, 3, 0, 3, 3, 1, 0, 7, 0, 1, 4, 7, 4, 7])); // -> Expect 4
+console.log(notThree([1, 3, 0, 3, 3, 1, 0, 7, 0, 1], 3)); // -> Expect 7
+console.log(notThree([1, 3, 0, 3, 3, 1, 0, 7, 0, 1, 4, 7, 4, 7], 3)); // -> Expect 4

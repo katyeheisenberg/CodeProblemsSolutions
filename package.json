@@ -1,0 +1,26 @@
+{
+  "name": "codeproblemssolutions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "binarySearch.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "jest": "^29.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katyeheisenberg/CodeProblemsSolutions.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/katyeheisenberg/CodeProblemsSolutions/issues"
+  },
+  "homepage": "https://github.com/katyeheisenberg/CodeProblemsSolutions#readme"
+}

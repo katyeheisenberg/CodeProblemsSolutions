@@ -60,7 +60,6 @@ const maxDepth = function (root) {
 //     beginWord != endWord
 //     All the words in wordList are unique.
 
-_____
 
 // Solution //
 
@@ -106,6 +105,9 @@ const ladderLength = (beginWord, endWord, wordList) => {
 };
 
 
+exports.ladderLength = ladderLength;
+
+
 
 // 46. Permutations //
 // Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
@@ -129,8 +131,6 @@ const ladderLength = (beginWord, endWord, wordList) => {
 //     1 <= nums.length <= 6
 //     -10 <= nums[i] <= 10
 //     All the integers of nums are unique.
-
-_____
 
 // solution //
 // 1 _ _ - [2, 3]
@@ -158,7 +158,6 @@ const permute = (nums, permutation = [], result = []) => {             // space 
   return result;                                                       // and to loop through it again as each time we're reducing nums array
 };                                                                     // 3 * 2 * 1 = n * (n - 1) * (n - 2) * ... : n! -> n-factorial 0(N!)
 
-_____
 // another solution with reduced space complexity 0(1)
 const swap = (arr, start, i) => {
   [arr[start], arr[i]] = [arr[i], arr[start]];
@@ -226,6 +225,8 @@ const findPeakElement = function(nums) {
     return nums.length - 1
 };
 
+exports.findPeakElement = findPeakElement
+
 // 234. palindrome linked list
 // Given the head of a singly linked list, return true if it is a palindrome.
 
@@ -242,7 +243,7 @@ const findPeakElement = function(nums) {
 //     The number of nodes in the list is in the range [1, 105].
 //     0 <= Node.val <= 9
 
-solution //
+// solution //
 const findMidPoint = (head) => {
   let slow = head;
   let fast = head;

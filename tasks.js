@@ -111,36 +111,26 @@ exports.ladderLength = ladderLength;
 
 // 46. Permutations //
 // Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
-
 // Example 1:
-
 // Input: nums = [1,2,3]
 // Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
-
 // Example 2:
-
 // Input: nums = [0,1]
 // Output: [[0,1],[1,0]]
-
 // Example 3:
-
 // Input: nums = [1]
 // Output: [[1]]
-
 // Constraints:
 //     1 <= nums.length <= 6
 //     -10 <= nums[i] <= 10
 //     All the integers of nums are unique.
-
 // solution //
 // 1 _ _ - [2, 3]
 // 1 2 3
 // 1 3 2
-
 // 2 _ _ - [1, 3]
 // 2 1 3
 // 2 3 1
-
 // 3 _ _ - [1, 2]
 // 3 1 2
 // 3 2 1
@@ -151,12 +141,14 @@ const permute = (nums, permutation = [], result = []) => {             // space 
   }                                                                    // 3rd- nums = [3] length - 0
   for (let i = 0; i < nums.length; i += 1) {                           // 4th- nums = []
     permutation = [...permutation, nums[i]];                           // stack runs 4 levels deep = n + 1
-    const nmbLeft = nums.filter((num, index) => index !== i); // <- it's the only time we use extra memory by creating new array
+    const nmbLeft = nums.filter((num, index) => index !== i);          // <- it's the only time we use extra memory by creating new array
     permute(nmbLeft, permutation, result);
     permutation.pop();                                                 // time complexity
   }                                                                    // we're running our for loop 3times and once we pushed nmb into permut array we've to run for loop 2 more times
   return result;                                                       // and to loop through it again as each time we're reducing nums array
 };                                                                     // 3 * 2 * 1 = n * (n - 1) * (n - 2) * ... : n! -> n-factorial 0(N!)
+
+exports.permute = permute
 
 // another solution with reduced space complexity 0(1)
 const swap = (arr, start, i) => {
@@ -169,11 +161,13 @@ const permute1 = (nums, start = 0, result = []) => {         // in this case we'
   }
   for (let i = start; i < nums.length; i += 1) {
     swap(nums, start, i);
-    permute(nums, start + 1, result);
+    permute1(nums, start + 1, result);
     swap(nums, start, i);
   }
   return result;
 };
+
+exports.permute1 = permute1
 
 // 162. Find Peak Element
 // A peak element is an element that is strictly greater than its neighbors.
@@ -366,6 +360,7 @@ const twoSum = (numbers, target) => { // this solution runs in linear time compl
   }
 };
 
+exports.twoSum = twoSum
 
 // 78. subsets
 // Given an integer array nums of unique elements, return all possible subsets (the power set).

@@ -98,6 +98,8 @@ const numIslands = (grid) => {
 console.log(numIslands(grid1));
 console.log(numIslands(grid2));
 
+exports.numIslands = numIslands;
+
 // another solution
 const teraform = (i, j, grid) => {
   if (grid[i] === undefined || grid[i][j] === undefined || grid[i][j] === "0")
@@ -174,6 +176,8 @@ const lengthOfLongestSubstring = (s) => {
 };
 
 console.log(lengthOfLongestSubstring('sdfsghjkqqq'), 'Longest substring')
+
+exports.lengthOfLongestSubstring = lengthOfLongestSubstring;
 
 // to find the shortest word
 // to create function which will find the first shortest word in the given string

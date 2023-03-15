@@ -4,6 +4,7 @@ const { permute } = require("../tasks");
 const { permute1 } = require("../tasks");
 const { twoSum } = require("../tasks");
 
+
 describe("tests of findPeakElement", function () {
   test("find peak element at the index 2", function () {
     expect(findPeakElement([1, 2, 3, 1])).toBe(2);
@@ -41,7 +42,7 @@ describe("tests of permute1 func", function () {
   });
 });
 
-describe("tests of permute1 func", function () {
+describe("tests of ladderLength func", function () {
   test("test wordlists transformations to be 5", function () {
     expect(
       ladderLength("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"])
@@ -56,7 +57,7 @@ describe("tests of permute1 func", function () {
 
 describe("tests of twoSum2 func", function () {
   test("find indices of  two nmbs for 9", function () {
-    expect(twoSum([2, 7, 11, 15], 9)).toStrictEqual([1, 2]);
+    expect(twoSum([2, 3, 4], 6)).toStrictEqual([1, 3]);
   });
   test("find indices of  two nmbs for -1", function () {
     expect(twoSum([-1, 0], -1)).toStrictEqual([1, 2]);

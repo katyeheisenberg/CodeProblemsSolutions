@@ -193,6 +193,8 @@ const findShortest = (str) => {
 
 console.log(findShortest("The mischievous dog is Jack"));
 
+exports.findShortest = findShortest;
+
 // Find the highest and the lowest nummber in the array
 // to create a function whicj will find hichest and lowest numbers in the array
 // if array contains only one number the function must return two same values
@@ -205,6 +207,8 @@ const findMM = (arr) => {
 }
 
 console.log(findMM([1, 2, -2, 6, 87]));
+
+exports.findMM = findMM;
 
 
 // 20. Valid Parentheses

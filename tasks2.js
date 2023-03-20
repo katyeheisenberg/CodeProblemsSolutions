@@ -222,7 +222,7 @@ exports.findMM = findMM;
 //     1 <= s.length <= 104
 //     s consists of parentheses only '()[]{}'.
 
-const isValid = function (string) {
+const isValid = (string) => {
   let stack = [];
   let dict = {
     "(": ")",
@@ -255,5 +255,8 @@ const isValid = function (string) {
   }
   return true;
 };
+
+exports.isValid = isValid;
+
 console.log(isValid("(]")); // expect to be equal to false
 console.log(isValid("()[]{}")); // expect to be equal to true

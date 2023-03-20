@@ -1,5 +1,5 @@
 const { numIslands, findShortest, findMM } = require("../tasks2");
-const { lengthOfLongestSubstring } = require("../tasks2");
+const { lengthOfLongestSubstring, isValid } = require("../tasks2");
 
 describe("tests of findNmbOfIslands func", function () {
   test("find one island on the grid", function () {
@@ -58,5 +58,14 @@ describe("tests of the highest and the lowest nummber in the array function", fu
   });
   test("test array with 0 and 2 nedded numbers", function () {
     expect(findMM([1, 1, 1, 0, 1, 1, 2])).toStrictEqual([0, 2]);
+  });
+});
+
+describe("tests of the valid parentheses func", function () {
+  test("test not valid string with parentheses", function () {
+    expect(isValid("(]")).toBe(false);
+  });
+  test("test valid string with parentheses", function () {
+    expect(isValid("()[]{}")).toBe(true);
   });
 });

@@ -77,6 +77,8 @@ const isValidSudoku = function(board) {
     return true
 }
 
+exports.isValidSudoku = isValidSudoku;
+
 console.log(isValidSudoku(board)) // expect fale
 
 

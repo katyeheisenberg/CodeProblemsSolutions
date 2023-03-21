@@ -81,47 +81,6 @@ exports.isValidSudoku = isValidSudoku;
 
 console.log(isValidSudoku(board)) // expect fale
 
-
-// Palindrom function
-// We need to create a function which will check if the word reads from left to right same as from right to left
-
-const word = 'aabbaa'
-
-const isPalindrom = (word) => {
-  for (let i = 0; i < word.length / 2; i += 1) {
-    if (word[i] !== word[word.length - 1 - i]) {
-      return false
-    }
-    return true
-  }
-}
-
-console.log(isPalindrom(word)) // expect true
-
-// Palindrom2
-// Check if we delete or remove one symbol from the given wrod would it be a palindrom
-
-const word2 = "abraa23rba67767677";
-
-const palindrom2 = (word2, n = 0) => {
-  for (let i = 0; i < word2.length; i += 1) {
-    if (word2[i] !== word2[word2.length - 1 - i] && n === 0) {
-      const res1 = palindrom2(word2.slice(i + 1, word2.length - 1 - i), n + 1)
-      const res2 = palindrom2(word2.slice(i, word2.length - 2 - i), n + 1);
-      return res1 || res2
-    }
-
-    if (word2[i] !== word2[word2.length - 1 - i] && n === 1) {
-      return false
-    }
-
-    return true;
-  }
-}
-
-console.log(palindrom2(word2)) // expect false
-
-
 // Minimum number of symbols
 // Create a function which will return the minima number of symbols that must be deleted in order to get a palindrome word
 
@@ -143,13 +102,10 @@ console.log(minSym(word3)) // expect 3
 
 // Palindrome
 // Another solution
-
 const word4 = "abrqaarba";
-
 const palFunc = (word4) => {
   let backward = '';
   let index = word4.length - 1;
-
   while (index >= 0) {
     backward += word4[index]
     index -= 1
@@ -159,13 +115,15 @@ const palFunc = (word4) => {
 
 console.log(palFunc(word4)) // expect false
 
+exports.palFunc = palFunc;
+
 
 // Palindrom2 (another solution)
 // Check if we delete or remove one symbol from the given wrod would it be a palindrom
 
 const word5 = "abraarba";
 
-const pal2Func = (word5) => {
+const palDelRem = (word5) => {
   const isTheSame = (text) => {
     let backward = "";
     let index = text.length - 1;
@@ -195,7 +153,11 @@ const pal2Func = (word5) => {
   return result;
 }
 
-console.log(pal2Func(word5)) // expect true
+console.log(palDelRem(word5)) // expect true
+
+exports.palDelRem = palDelRem;
+
+
 
 // Palindrome task number 4(sk solution)
 // create a function wich will return the number of letters that must be deleted to get palindrom word.

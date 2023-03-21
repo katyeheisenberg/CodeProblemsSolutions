@@ -1,5 +1,4 @@
-const { twoSum } = require("../tasks");
-const { isValidSudoku } = require("../tasks3");
+const { isValidSudoku, palFunc, palDelRem } = require("../tasks3");
 
 
 describe("tests of the is valid sudoku func", function () {
@@ -32,5 +31,23 @@ describe("tests of the is valid sudoku func", function () {
         [".", ".", ".", ".", "8", ".", ".", "7", "9"],
       ])
     ).toBe(true);
+  });
+});
+
+describe("tests of palindrom func", function () {
+  test("test aabbaa word - palindrome", function () {
+    expect(palFunc("aabbaa")).toBe(true);
+  });
+  test("test aaba4a word - not palindrome", function () {
+    expect(palFunc("aaba4a")).toBe(false);
+  });
+});
+
+describe("tests of palindrom function which checks if word is palindrom if deleted or removed one symbol", function () {
+  test("test aabbaa word - palindrome", function () {
+    expect(palDelRem("abraarba")).toBe(true);
+  });
+  test("test aabbaa4 word - not palindrome", function () {
+    expect(palDelRem("aaba45a")).toBe(false);
   });
 });

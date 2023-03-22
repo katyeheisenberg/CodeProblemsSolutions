@@ -188,4 +188,6 @@ for (let i = 0; i < str.length; i += 1) {
 return count
 }
 
+exports.isPlaindrom4 = isPlaindrom4;
+
 console.log(isPlaindrom4(word6))  // expect 4

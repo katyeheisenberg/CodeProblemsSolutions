@@ -1,4 +1,9 @@
-const { isValidSudoku, palFunc, palDelRem } = require("../tasks3");
+const {
+  isValidSudoku,
+  palFunc,
+  palDelRem,
+  isPlaindrom4,
+} = require("../tasks3");
 
 
 describe("tests of the is valid sudoku func", function () {
@@ -49,5 +54,14 @@ describe("tests of palindrom function which checks if word is palindrom if delet
   });
   test("test aabbaa4 word - not palindrome", function () {
     expect(palDelRem("aaba45a")).toBe(false);
+  });
+});
+
+describe("tests of func wich will return the number of letters that must be deleted to get palindrom word", function () {
+  test("test Abrar2341ba - 4 symbols to delete", function () {
+    expect(isPlaindrom4("Abrar2341ba")).toBe(4);
+  });
+  test("test Abrarba - 0 symbols to delete", function () {
+    expect(isPlaindrom4("Abrarba")).toBe(0);
   });
 });

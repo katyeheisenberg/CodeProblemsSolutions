@@ -120,3 +120,40 @@ const jumpGame = (arr) => {
 console.log(jumpGame([3, 2, 1, 0, 4])); // expect -> fasle
 console.log(jumpGame([3, 2, 1, 5, 4])); // expect -> true
 
+
+// 299. Bulls and Cows
+
+// You are playing the Bulls and Cows game with your friend.
+
+// You write down a secret number and ask your friend to guess what the number is. When your friend makes a guess, you provide a hint with the following info:
+
+//     The number of "bulls", which are digits in the guess that are in the correct position.
+//     The number of "cows", which are digits in the guess that are in your secret number but are located in the wrong position. Specifically, the non-bull digits in the guess that could be rearranged such that they become bulls.
+
+// Given the secret number secret and your friend's guess guess, return the hint for your friend's guess.
+
+// The hint should be formatted as "xAyB", where x is the number of bulls and y is the number of cows. Note that both secret and guess may contain duplicate digits.
+
+const getHint = function(secret, guess) {
+    let bulls = 0;
+    let cows = 0;
+    let digits = new Array(10).fill(0)
+    for (let i = 0; i < secret.length; i+=1) {
+        if (secret[i] === guess[i]) {
+            bulls+=1;
+            // swap out the caharacter that already matched with an 'X'
+            guess = guess.substring(0, i) + 'X' + guess.substring(i + 1);
+        } else {
+            digits[secret[i]]+=1;
+        }
+    }
+    // check for matching digits in the wrong place -cows-
+    for (let i = 0; i < guess.length; i+=1) {
+        if (digits[guess[i]]) {
+            cows+=1;
+            digits[guess[i]]-=1;
+        }
+    }
+    return `${bulls}A${cows}B`;
+}
+

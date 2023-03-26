@@ -26,6 +26,8 @@ const checkTheOrder = (subs, string) => {
 console.log(checkTheOrder("abc", "abraaarba")); // expect false
 console.log(checkTheOrder("abc", "abracadabra")); // expect true
 
+exports.checkTheOrder = checkTheOrder;
+
 
 // Strip Comments
 // Complete the solution so that it strips all text that follows any of a set of comment markers passed in.
@@ -95,6 +97,8 @@ function nextSmaller(n) {
 
   return -1
 }
+
+exports.nextSmaller = nextSmaller;
 
 console.log(nextSmaller(21))
 

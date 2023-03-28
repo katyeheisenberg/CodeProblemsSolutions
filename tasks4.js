@@ -131,6 +131,8 @@ function titleCase(title, minorWords) {
     .join(" ");
 }
 
+exports.titleCase = titleCase;
+
 console.log(titleCase("THE WIND IN THE WILLOWS", "The In")); // expect 'The Wind in the Willows'
 
 // Number of vowels

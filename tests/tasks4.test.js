@@ -1,7 +1,4 @@
-const {
-  checkTheOrder,
-  nextSmaller
-} = require("../tasks4");
+const { checkTheOrder, nextSmaller, titleCase } = require("../tasks4");
 
 
 describe("tests of checkTheOrder func", function () {
@@ -25,5 +22,17 @@ describe("tests of nextSmaller func", function () {
   });
   test("test truthy string", function () {
     expect(nextSmaller(9)).toBe(-1);
+  });
+});
+
+
+describe("tests of titleCase func", function () {
+  test("test the wind in the willows with 'The In' - minor words", function () {
+    expect(titleCase("THE WIND IN THE WILLOWS", "The In")).toBe(
+      "The Wind in the Willows"
+    );
+  });
+  test("test truthy string", function () {
+    expect(titleCase("a clash of KINGS", "a an the of")).toBe("A Clash of Kings");
   });
 });

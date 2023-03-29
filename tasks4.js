@@ -162,8 +162,12 @@ const factorial = (nmb) => {
 console.log(factorial(5)) // expect 120
 console.log(factorial(9)) // expect 362880
 
+exports.factorial = factorial;
+
 // Function that should merge all the given arrays that are placed in one array and to sort all the numbers from them
-const arr = [[1, 5, 7, 20], [3, 100, 110], [6, 13, 28]]
+
+const arr = [[1, 5, 7, 20], [3, 100, 110], [6, 13, 28]];
+
 const merge = (arg1, arg2) => {
   let count = 0
   let count2 = 0
@@ -190,21 +194,27 @@ const merge = (arg1, arg2) => {
   return result
 }
 
-const sortedArr = arr.reduce((acc, rec) => merge(acc, rec))
+const sortedArr = (arr) => {
+  return arr.reduce((acc, rec) => merge(acc, rec), [])
+}
 
 console.log(sortedArr) // expect 1,3,5,6,7,13,20,28,100,110
+
+exports.sortedArr = sortedArr;
 
 // Find the biggest number in the array with arrays
 
 const array = [[1,3,42,3432222,13], [22323, 11, 343443222, 49999999993, 233], [12,434,3333,34]]
 
-const result = (array) => {
+const biggestNmbArr = (array) => {
   return array.map((it) => {
     return it.reduce((acc, rec) => Math.max(acc, rec))
   }).reduce((acc, rec) => Math.max(acc, rec))
 }
 
-console.log(result(array)) // expect 49999999993
+console.log(biggestNmbArr(array)); // expect 49999999993
+
+exports.biggestNmbArr = biggestNmbArr;
 
 // Find specific word in the array
 
@@ -234,29 +244,3 @@ const nmbArrWord = (arr) => {
 }
 
 console.log(nmbArrWord(['apple', 'appleJuice', 'brownie', 'sledges', 'furry', 'apple'])) // expect { apple: 2, appleJuice: 1, brownie: 1, sledges: 1, furry: 1 }
-
-//To write a function which'll merge to arrays and return array with sorted numbers
-// Input: [1, 2, 3, 10, 11, 77], [6, 8, 23, 80]
-// Output: [1,  2,  3,  6,  8, 10, 11, 23, 77, 80 ]
-
-
-const foo = (a, b) => {
-  let res = []
-  let index1 = 0
-  let index2 = 0
-  while(res.length < a.length + b.length) {
-    if(a[index1] >= b[index2]) {
-      res = [...res, b[index2]]
-      index2 += 1
-    } else {
-    res = [...res, a[index1]]
-    index1 += 1
-    }
-     if (index1 === a.length) {
-      res = [...res, b[index2]]
-      index2 += 1
-     }
-  }
-  return res
-}
-console.log(foo([1, 2, 3, 10, 11, 77], [6, 8, 23, 80])) // expect [1,  2,  3,  6,  8, 10, 11, 23, 77, 80 ]

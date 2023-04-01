@@ -216,13 +216,13 @@ console.log(biggestNmbArr(array)); // expect 49999999993
 
 exports.biggestNmbArr = biggestNmbArr;
 
-// Find specific word in the array
+// Find words with specific letters in it in the array
 
 const wordArray = ['fresh', 'lemon', 'horse', 'soap', 'maverick']
 
 const findWord = (element, wordArray) => {
   return wordArray.reduce((acc, rec) => {
-    if(acc === '') return rec
+    if (acc === "" && rec.includes(element)) return rec;
     if(rec.includes(element)) {
       return `${acc}, ${rec}`
     }
@@ -230,11 +230,14 @@ const findWord = (element, wordArray) => {
   }, '')
 }
 
+exports.findWord = findWord;
+
 console.log(findWord('e', wordArray)) // expect fresh, lemon, horse, maverick
 
 // To count the number of word in the given array
 
 const nmbArrWord = (arr) => {
+  if (arr.length === 0) return "It looks like there's no words in the array";
   return arr.reduce((acc, rec) => {
     return {
       ...acc,
@@ -244,3 +247,5 @@ const nmbArrWord = (arr) => {
 }
 
 console.log(nmbArrWord(['apple', 'appleJuice', 'brownie', 'sledges', 'furry', 'apple'])) // expect { apple: 2, appleJuice: 1, brownie: 1, sledges: 1, furry: 1 }
+
+exports.nmbArrWord = nmbArrWord;

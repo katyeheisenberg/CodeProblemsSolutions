@@ -5,6 +5,8 @@ const {
   factorial,
   sortedArr,
   biggestNmbArr,
+  findWord,
+  nmbArrWord
 } = require("../tasks4");
 
 describe("tests of checkTheOrder func", function () {
@@ -85,5 +87,39 @@ describe("tests of biggestNmbArr func", function() {
         [-12, -434, -3333, -34],
       ])
     ).toBe(-1);
+  });
+});
+
+describe("tests of findWord func", function () {
+  test("find words with l", function () {
+    expect(
+      findWord("l", ["fresh", "lemon", "horse", "soap", "maverick"])
+    ).toEqual("lemon");
+  });
+  test("find words with q", function () {
+    expect(
+      findWord("q", ["fresh", "lemon", "horse", "soap", "maverick"])
+    ).toEqual("");
+  });
+});
+
+
+describe("tests of nmbArrWord func", function () {
+  test("calculate number of each word's appearance in not empty array", function () {
+    expect(
+      nmbArrWord([
+        "apple",
+        "appleJuice",
+        "brownie",
+        "sledges",
+        "furry",
+        "apple",
+      ])
+    ).toEqual({ apple: 2, appleJuice: 1, brownie: 1, sledges: 1, furry: 1 });
+  });
+  test("calculate number of each word's appearance in an empty array", function () {
+    expect(nmbArrWord([])).toEqual(
+      "It looks like there's no words in the array"
+    );
   });
 });

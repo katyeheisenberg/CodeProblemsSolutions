@@ -29,4 +29,3 @@ console.log(isValidAnagram("anagram", "nagaram")); // expect true
 console.log(isValidAnagram("bom", "tom")); // expect false
 
 exports.isValidAnagram = isValidAnagram;
-f

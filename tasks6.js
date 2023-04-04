@@ -61,8 +61,8 @@ console.log(productArr([1, 2, 3, 4])); // expect [ 24, 12, 8, 6 ]
 // Output: 4
 // Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
 // Total amount you can rob = 1 + 3 = 4.
-// Example 2:
 
+// Example 2:
 // Input: nums = [2,7,9,3,1]
 // Output: 12
 // Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
@@ -87,6 +87,9 @@ const robberFunc = (arr) => {
 
 console.log(robberFunc([2, 7, 9, 3, 1])); // expect 12
 console.log(robberFunc([1, 2, 3, 1])); // expect 4
+
+exports.robberFunc = robberFunc;
+
 
 // 121. Best Time to Buy and Sell Stock
 // You are given an array prices where prices[i] is the price of a given stock on the ith day.

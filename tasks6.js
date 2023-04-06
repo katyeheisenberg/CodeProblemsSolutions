@@ -23,30 +23,51 @@
 // Follow up: Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)
 
 const productArr = (nums) => {
-    let result = new Array(nums.length).fill(nums[0])
-    let variable = nums[nums.length - 1]
+  let result = new Array(nums.length).fill(nums[0]);
+  let variable = nums[nums.length - 1];
 
-    for (let i = 1; i < nums.length; i += 1) {
-        result[i] = result[i - 1] * nums[i]
-    }
+  for (let i = 1; i < nums.length; i += 1) {
+    result[i] = result[i - 1] * nums[i];
+  }
 
-    result[nums.length - 1] = result[result.length - 2]
+  result[nums.length - 1] = result[result.length - 2];
 
-    for (let j = nums.length - 2; j > 0; j -= 1) {
-        result[j] = result[j - 1] * variable
-        variable = variable * nums[j]
-    }
+  for (let j = nums.length - 2; j > 0; j -= 1) {
+    result[j] = result[j - 1] * variable;
+    variable = variable * nums[j];
+  }
 
-    result[0] = variable
-    return result
-}
+  result[0] = variable;
+  return result;
+};
 
 console.log(productArr([1,2,4,5,1])) // expect [ 40, 20, 10, 8, 40 ]
 console.log(productArr([1, 2, 3, 4])); // expect [ 24, 12, 8, 6 ]
 
 exports.productArr = productArr;
 
+const productArr2 = (nums) => {
+  let result = [];
 
+  let before = 1;
+  for (let i = 0; i < nums.length; i += 1) {
+    result[i] = before;
+    before *= nums[i];
+  }
+
+  let after = 1;
+  for (let j = nums.length - 1; j >= 0; j -= 1) {
+    result[j] *= after;
+    after *= nums[j];
+  }
+
+  return result;
+};
+
+console.log(productArr2([1, 2, 4, 5, 1]));
+console.log(productArr2([1, 2, 3, 4]));
+
+exports.productArr2 = productArr2;
 
 // 198. House Robber
 
@@ -56,7 +77,6 @@ exports.productArr = productArr;
 
 // Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight
 //  without alerting the police.
-
 
 // Example 1:
 // Input: nums = [1,2,3,1]
@@ -70,28 +90,29 @@ exports.productArr = productArr;
 // Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
 // Total amount you can rob = 2 + 9 + 1 = 12.
 
-
 // Constraints:
 // 1 <= nums.length <= 100
 // 0 <= nums[i] <= 400
 
 const robberFunc = (arr) => {
-  if(arr.length === 1) return arr[0]
-  if(!arr.length) return 0
-  if(arr.length === 2) return Math.max(arr[0], arr[1])
+  if (arr.length === 1) return arr[0];
+  if (!arr.length) return 0;
+  if (arr.length === 2) return Math.max(arr[0], arr[1]);
 
   for (let houseIndex = 2; houseIndex < arr.length; houseIndex += 1) {
-    arr[houseIndex] = Math.max(arr[houseIndex - 2] + arr[houseIndex], (arr[houseIndex - 3] || 0) + arr[houseIndex])
+    arr[houseIndex] = Math.max(
+      arr[houseIndex - 2] + arr[houseIndex],
+      (arr[houseIndex - 3] || 0) + arr[houseIndex]
+    );
   }
 
-  return Math.max(arr[arr.length - 1], arr[arr.length - 2])
-}
+  return Math.max(arr[arr.length - 1], arr[arr.length - 2]);
+};
 
 console.log(robberFunc([2, 7, 9, 3, 1])); // expect 12
 console.log(robberFunc([1, 2, 3, 1])); // expect 4
 
 exports.robberFunc = robberFunc;
-
 
 // 121. Best Time to Buy and Sell Stock
 // You are given an array prices where prices[i] is the price of a given stock on the ith day.
@@ -117,20 +138,19 @@ const timeStockFunc = (arr) => {
   let buyIndex = arr[0];
   arr[0] = 0;
   let profit = 0;
-  for(let i = 1; i < arr.length; i += 1) {
-    if(buyIndex > arr[i]) {
-      buyIndex = arr[i]
-      arr[i] = 0
+  for (let i = 1; i < arr.length; i += 1) {
+    if (buyIndex > arr[i]) {
+      buyIndex = arr[i];
+      arr[i] = 0;
     } else {
-      profit = Math.max(arr[i] - buyIndex, profit)
+      profit = Math.max(arr[i] - buyIndex, profit);
     }
   }
-  return profit
-}
+  return profit;
+};
 
 console.log(timeStockFunc([7, 6, 4, 3, 1])); // expect 0
 console.log(timeStockFunc([7, 1, 5, 3, 6, 4])); // expect 5
-
 
 // 337. House Robber III
 
@@ -148,20 +168,24 @@ console.log(timeStockFunc([7, 1, 5, 3, 6, 4])); // expect 5
 
 const houseR3 = (root) => {
   function decide(node) {
-    if(!node) return [0,0]
+    if (!node) return [0, 0];
 
-    let [leftRob, leftNot] = decide(node.left)
-    let [rightRob, rightNot] = decide(node.right)
+    let [leftRob, leftNot] = decide(node.left);
+    let [rightRob, rightNot] = decide(node.right);
 
-    let notRob = Math.max(leftRob+rightRob, leftRob+rightNot, leftNot+rightNot, leftNot+rightRob)
-    let robDecision = node.val + leftNot + rightNot
+    let notRob = Math.max(
+      leftRob + rightRob,
+      leftRob + rightNot,
+      leftNot + rightNot,
+      leftNot + rightRob
+    );
+    let robDecision = node.val + leftNot + rightNot;
 
-    return [robDecision, notRob]
+    return [robDecision, notRob];
   }
 
-  return Math.max(...decide(root))
-
-}
+  return Math.max(...decide(root));
+};
 
 // 189. Rotate Array
 // Given an array, rotate the array to the right by k steps, where k is non-negative.
@@ -200,7 +224,6 @@ const rotate = (nums, k) => {
   movePosition(nums, k, nums.length - 1);
 };
 
-
 // 202. Happy Number
 // Write an algorithm to determine if a number n is happy.
 
@@ -219,7 +242,6 @@ const rotate = (nums, k) => {
 // 82 + 22 = 68
 // 62 + 82 = 100
 // 12 + 02 + 02 = 1
-
 
 const sumNum = (num) => {
   let total = 0;
@@ -244,41 +266,37 @@ const isHappy = (n) => {
   }
 };
 
-console.log(isHappy(19)) // true
-console.log(isHappy(2)) // false
-
-
-
+console.log(isHappy(19)); // true
+console.log(isHappy(2)); // false
 
 // 340 leetcode problem
 
 const connections = (arr) => {
-  let map = {}
-  let start = 0
-  let max = 0
+  let map = {};
+  let start = 0;
+  let max = 0;
   for (let i = 0; i < arr.length; i += 1) {
-    let end = arr[i]
-    map[arr[i]] = map[arr[i]] + 1 || 1
+    let end = arr[i];
+    map[arr[i]] = map[arr[i]] + 1 || 1;
     while (Object.keys(map).length > 2) {
-      let startRes = arr[start]
-      if(map[startRes] > 1) {
-        map[startRes] -= 1
+      let startRes = arr[start];
+      if (map[startRes] > 1) {
+        map[startRes] -= 1;
       } else {
-        delete map[startRes]
+        delete map[startRes];
       }
-      start += 1
+      start += 1;
     }
-   max = Math.max(max, (i - start) + 1)
+    max = Math.max(max, i - start + 1);
   }
-  return max
-}
+  return max;
+};
 
-console.log(connections([7, 1, 4, 1, 9, 1, 1, 9, 1, 7, 9])) // expect 6
+console.log(connections([7, 1, 4, 1, 9, 1, 1, 9, 1, 7, 9])); // expect 6
 console.log(connections([1, 2, 3, 4, 5])); // expect 2
-console.log(connections([5, 5, 5, 5, 5])) // expect 5
-console.log(connections([1, 2, 1, 1, 3, 1, 2, 1, 4])) // expect 4
-console.log(connections([1, 0, 0, 0, 0, 0, 0])) // expect 7
-
+console.log(connections([5, 5, 5, 5, 5])); // expect 5
+console.log(connections([1, 2, 1, 1, 3, 1, 2, 1, 4])); // expect 4
+console.log(connections([1, 0, 0, 0, 0, 0, 0])); // expect 7
 
 // 1762. Buildings w Ocean view
 // There are n buildings in a line. You are given an integer array heights
@@ -305,13 +323,13 @@ const ocean = (arr) => {
   let endIndex = arr.length - 1;
   let result = [endIndex];
   for (let i = arr.length - 2; i >= 0; i -= 1) {
-    let currentB = arr[i]
-    let lastB = arr[result[result.length - 1]]
-    if(currentB > lastB) {
-      result = [...result, i]
+    let currentB = arr[i];
+    let lastB = arr[result[result.length - 1]];
+    if (currentB > lastB) {
+      result = [...result, i];
     }
   }
-  return result.reverse()
-}
-console.log(ocean(arr)) // expect [0, 2, 3]
-console.log(ocean(arr2)) // expect [0, 1, 2, 3]
+  return result.reverse();
+};
+console.log(ocean(arr)); // expect [0, 2, 3]
+console.log(ocean(arr2)); // expect [0, 1, 2, 3]

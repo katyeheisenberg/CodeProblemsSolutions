@@ -44,6 +44,8 @@ const productArr = (nums) => {
 console.log(productArr([1,2,4,5,1])) // expect [ 40, 20, 10, 8, 40 ]
 console.log(productArr([1, 2, 3, 4])); // expect [ 24, 12, 8, 6 ]
 
+exports.productArr = productArr;
+
 
 
 // 198. House Robber

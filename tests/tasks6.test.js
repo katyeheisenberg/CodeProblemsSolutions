@@ -1,4 +1,4 @@
-const { robberFunc, productArr, productArr2 } = require("../tasks6");
+const { robberFunc, productArr, productArr2, timeStockFunc, rotate } = require("../tasks6");
 
 describe("tests of robberFunc", function () {
   test("[1,2,3,1] array of houses with max amount of money 4", function () {
@@ -29,3 +29,28 @@ describe("tests of product Array 2nd solution except self function", function ()
     expect(productArr2([1, 2, 3, 4])).toEqual([24, 12, 8, 6]);
   });
 });
+
+describe("test of best time to buy & sell stock function", function() {
+  test("first buy & fifth sell array [7,1,5,3,6,4] with result 5", function () {
+    expect(timeStockFunc([7, 1, 5, 3, 6, 4])).toBe(5);
+  });
+  test("array [7,6,4,3,1] with no max profit", function () {
+    expect(timeStockFunc([7, 6, 4, 3, 1])).toBe(0);
+  });
+});
+
+
+describe("test of rotate an array function", function() {
+  test("rotate [1,2,3,4,5,6,7] array by 3 steps", function() {
+    expect(rotate([1, 2, 3, 4, 5, 6, 7], 3)).toMatchObject([
+      5, 6, 7, 1, 2, 3, 4,
+    ]);
+  });
+  test("rotate [1,2,3,4,5,6,7] array by 4 steps", function() {
+    expect(rotate([1, 2, 3, 4, 5, 6, 7], 4)).toMatchObject([4, 5, 6, 7, 1, 2, 3]);
+  });
+  test("rotate [-1,-100,3,99] array by 2 steps", function () {
+    expect(rotate([-1, -100, 3, 99], 2)).toMatchObject([3, 99, -1, -100]);
+  });
+})
+

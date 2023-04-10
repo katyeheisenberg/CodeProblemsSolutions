@@ -152,6 +152,8 @@ const timeStockFunc = (arr) => {
 console.log(timeStockFunc([7, 6, 4, 3, 1])); // expect 0
 console.log(timeStockFunc([7, 1, 5, 3, 6, 4])); // expect 5
 
+exports.timeStockFunc = timeStockFunc;
+
 // 337. House Robber III
 
 // The thief has found himself a new place for his thievery again. There is only one entrance to this area, called root.
@@ -222,7 +224,10 @@ const rotate = (nums, k) => {
   nums.reverse();
   movePosition(nums, 0, k - 1);
   movePosition(nums, k, nums.length - 1);
+  return nums
 };
+
+exports.rotate = rotate;
 
 // 202. Happy Number
 // Write an algorithm to determine if a number n is happy.

@@ -274,6 +274,8 @@ const isHappy = (n) => {
 console.log(isHappy(19)); // true
 console.log(isHappy(2)); // false
 
+exports.isHappy = isHappy;
+
 // 340 leetcode problem
 
 const connections = (arr) => {

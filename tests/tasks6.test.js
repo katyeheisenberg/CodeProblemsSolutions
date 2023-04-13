@@ -1,4 +1,4 @@
-const { robberFunc, productArr, productArr2, timeStockFunc, rotate, isHappy } = require("../tasks6");
+const { robberFunc, productArr, productArr2, timeStockFunc, rotate, isHappy, ocean } = require("../tasks6");
 
 describe("tests of robberFunc", function () {
   test("[1,2,3,1] array of houses with max amount of money 4", function () {
@@ -61,4 +61,13 @@ describe("test of HappyNumber function", function() {
   test("unhappy number 2 - false", function() {
     expect(isHappy(2)).toBe(false);
   })
+})
+
+describe("test of ocean view function", function() {
+  test("test array of buildings [4, 2, 3, 1]", function () {
+    expect(ocean([4, 2, 3, 1])).toEqual([0, 2, 3]);
+  });
+  test("test array of buildings [4, 2, 3, 1]", function () {
+    expect(ocean([4, 3, 2, 1])).toEqual([0, 1, 2, 3]);
+  });
 })

@@ -276,35 +276,6 @@ console.log(isHappy(2)); // false
 
 exports.isHappy = isHappy;
 
-// 340 leetcode problem
-
-const connections = (arr) => {
-  let map = {};
-  let start = 0;
-  let max = 0;
-  for (let i = 0; i < arr.length; i += 1) {
-    let end = arr[i];
-    map[arr[i]] = map[arr[i]] + 1 || 1;
-    while (Object.keys(map).length > 2) {
-      let startRes = arr[start];
-      if (map[startRes] > 1) {
-        map[startRes] -= 1;
-      } else {
-        delete map[startRes];
-      }
-      start += 1;
-    }
-    max = Math.max(max, i - start + 1);
-  }
-  return max;
-};
-
-console.log(connections([7, 1, 4, 1, 9, 1, 1, 9, 1, 7, 9])); // expect 6
-console.log(connections([1, 2, 3, 4, 5])); // expect 2
-console.log(connections([5, 5, 5, 5, 5])); // expect 5
-console.log(connections([1, 2, 1, 1, 3, 1, 2, 1, 4])); // expect 4
-console.log(connections([1, 0, 0, 0, 0, 0, 0])); // expect 7
-
 // 1762. Buildings w Ocean view
 // There are n buildings in a line. You are given an integer array heights
 // of size n that represents the heights of the buildings in the line.
@@ -323,9 +294,6 @@ console.log(connections([1, 0, 0, 0, 0, 0, 0])); // expect 7
 // Output: [0,1,2,3]
 // Explanation: All the buildings have an ocean view.
 
-const arr = [4, 2, 3, 1];
-const arr2 = [4, 3, 2, 1];
-
 const ocean = (arr) => {
   let endIndex = arr.length - 1;
   let result = [endIndex];
@@ -338,5 +306,7 @@ const ocean = (arr) => {
   }
   return result.reverse();
 };
-console.log(ocean(arr)); // expect [0, 2, 3]
-console.log(ocean(arr2)); // expect [0, 1, 2, 3]
+console.log(ocean([4, 2, 3, 1])); // expect [0, 2, 3]
+console.log(ocean([4, 3, 2, 1])); // expect [0, 1, 2, 3]
+
+exports.ocean = ocean;

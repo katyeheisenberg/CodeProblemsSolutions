@@ -42,49 +42,40 @@
 //     board[i].length == 9
 //     board[i][j] is a digit 1-9 or '.'.
 
-const board = [
-  ["8", "3", ".", ".", "7", ".", ".", ".", "."],
-  ["6", ".", ".", "1", "9", "5", ".", ".", "."],
-  [".", "9", "8", ".", ".", ".", ".", "6", "."],
-  ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
-  ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
-  ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
-  [".", "6", ".", ".", ".", ".", "2", "8", "."],
-  [".", ".", ".", "4", "1", "9", ".", ".", "5"],
-  [".", ".", ".", ".", "8", ".", ".", "7", "9"],
-];
+const isValidSudoku = function (board) {
+  const isUsedInRow = new Array(9).fill(0).map((_) => new Array());
+  const isUsedInCol = new Array(9).fill(0).map((_) => new Array());
+  const isUsedInSub = new Array(9).fill(0).map((_) => new Array());
 
-
-const isValidSudoku = function(board) {
-    const isUsedInRow = new Array(9).fill(0).map(_ => new Array())
-    const isUsedInCol = new Array(9).fill(0).map(_ => new Array())
-    const isUsedInSub = new Array(9).fill(0).map(_ => new Array())
-
-    for (let i = 0; i < 9; i += 1) {
-        for (let h = 0; h < 9; h += 1) {
-            const cell = board[i][h]
-            if (cell === '.') continue
-            const subBoxIndex = Math.floor(i / 3) + Math.floor(h / 3) * 3
-            if (isUsedInRow[i][cell] || isUsedInCol[h][cell] || isUsedInSub[subBoxIndex][cell]) {
-                return false
-            }
-            isUsedInRow[i][cell] = true
-            isUsedInCol[h][cell] = true
-            isUsedInSub[subBoxIndex][cell] = true
-        }
+  for (let i = 0; i < 9; i += 1) {
+    for (let h = 0; h < 9; h += 1) {
+      const cell = board[i][h];
+      if (cell === ".") continue;
+      const subBoxIndex = Math.floor(i / 3) + Math.floor(h / 3) * 3;
+      if (
+        isUsedInRow[i][cell] ||
+        isUsedInCol[h][cell] ||
+        isUsedInSub[subBoxIndex][cell]
+      ) {
+        return false;
+      }
+      isUsedInRow[i][cell] = true;
+      isUsedInCol[h][cell] = true;
+      isUsedInSub[subBoxIndex][cell] = true;
     }
+  }
 
-    return true
-}
+  return true;
+};
 
 exports.isValidSudoku = isValidSudoku;
 
-console.log(isValidSudoku(board)) // expect fale
+
 
 // Minimum number of symbols
 // Create a function which will return the minima number of symbols that must be deleted in order to get a palindrome word
 
-const word3 = 'aaabbaaa099'
+const word3 = "aaabbaaa099";
 
 const minSym = (word3, n = 0) => {
   for (let i = 0; i < word3.length / 2; i += 1) {
@@ -93,35 +84,30 @@ const minSym = (word3, n = 0) => {
       const res2 = minSym(word3.slice(i, word3.length - 2 - i), n + 1);
       return Math.min(res1, res2);
     }
- }
- return n;
-}
-
-console.log(minSym(word3)) // expect 3
+  }
+  return n;
+};
 
 
 // Palindrome
 // Another solution
-const word4 = "abrqaarba";
+
 const palFunc = (word4) => {
-  let backward = '';
+  let backward = "";
   let index = word4.length - 1;
   while (index >= 0) {
-    backward += word4[index]
-    index -= 1
+    backward += word4[index];
+    index -= 1;
   }
-  return word4.toLocaleLowerCase() === backward.toLocaleLowerCase()
-}
-
-console.log(palFunc(word4)) // expect false
+  return word4.toLocaleLowerCase() === backward.toLocaleLowerCase();
+};
 
 exports.palFunc = palFunc;
 
 
+
 // Palindrom2 (another solution)
 // Check if we delete or remove one symbol from the given wrod would it be a palindrom
-
-const word5 = "abraarba";
 
 const palDelRem = (word5) => {
   const isTheSame = (text) => {
@@ -151,43 +137,36 @@ const palDelRem = (word5) => {
   }
 
   return result;
-}
-
-console.log(palDelRem(word5)) // expect true
+};
 
 exports.palDelRem = palDelRem;
-
 
 
 // Palindrome task number 4(sk solution)
 // create a function wich will return the number of letters that must be deleted to get palindrom word.
 // the function has to work with words written in lower and in upper case similarly
 
-const word6 = "Abrar2341ba";
-
 const isPlaindrom4 = (word6, count = 0) => {
-let str = word6.toLowerCase()
+  let str = word6.toLowerCase();
 
-if(count > 0) {
-  const str1 = str.slice(0, str.length - 1)
-  const str2 = str.slice(1)
+  if (count > 0) {
+    const str1 = str.slice(0, str.length - 1);
+    const str2 = str.slice(1);
 
-  const count1 = isPlaindrom4(str1)
-  const count2 = isPlaindrom4(str2)
+    const count1 = isPlaindrom4(str1);
+    const count2 = isPlaindrom4(str2);
 
-  str = count1 < count2 ? str1 : str2
-}
-
-for (let i = 0; i < str.length; i += 1) {
-  if(str[i] !== str[str.length - 1 - i]) {
-    count += 1
-    const slicedStr = str.slice(i, str.length - i)
-    return isPlaindrom4(slicedStr, count);
+    str = count1 < count2 ? str1 : str2;
   }
-}
-return count
-}
+
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] !== str[str.length - 1 - i]) {
+      count += 1;
+      const slicedStr = str.slice(i, str.length - i);
+      return isPlaindrom4(slicedStr, count);
+    }
+  }
+  return count;
+};
 
 exports.isPlaindrom4 = isPlaindrom4;
-
-console.log(isPlaindrom4(word6))  // expect 4

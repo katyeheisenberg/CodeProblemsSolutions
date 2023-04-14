@@ -4,7 +4,6 @@
 // Input: abc, abracadabra
 // Output: true
 
-
 const checkTheOrder = (subs, string) => {
   let count = 0;
   let index = 0;
@@ -23,10 +22,8 @@ const checkTheOrder = (subs, string) => {
   return false;
 };
 
-console.log(checkTheOrder("abc", "abraaarba")); // expect false
-console.log(checkTheOrder("abc", "abracadabra")); // expect true
-
 exports.checkTheOrder = checkTheOrder;
+
 
 
 // Strip Comments
@@ -45,26 +42,19 @@ exports.checkTheOrder = checkTheOrder;
 // bananas
 
 const stripComments = (input, markers) => {
-  let  arr = input.split('\n')
+  let arr = input.split("\n");
   for (let i = 0; i < markers.length; i += 1) {
     arr = arr.map((el) => {
-      const index = el.indexOf(markers[i])
+      const index = el.indexOf(markers[i]);
       if (index !== -1) {
-        return el.substring(0, index)
+        return el.substring(0, index);
       } else {
-        return el.replace(/\s*$/, '')
+        return el.replace(/\s*$/, "");
       }
-    })
+    });
   }
-  return arr.join('\n').trim()
+  return arr.join("\n").trim();
 };
-
-console.log(
-  stripComments("apples, pears # and bananas\ngrapes\nbananas !apples", [
-    "#",
-    "!",
-  ])
-); // expect "apples, pears\ngrapes\nbananas"
 
 
 // Next smaller number with the same digits
@@ -84,23 +74,28 @@ console.log(
 //     some tests will include very large numbers.
 //     test data only employs positive integers.
 
-
-const minify = (n) => n.toString().split('').sort().join('').replace(/^(0+)([1-9])/, '$2$1')
+const minify = (n) =>
+  n
+    .toString()
+    .split("")
+    .sort()
+    .join("")
+    .replace(/^(0+)([1-9])/, "$2$1");
 
 function nextSmaller(n) {
   const min = minify(n);
   for (let i = n - 1; i >= min; i -= 1) {
     if (minify(i) === min) {
-      return i
+      return i;
     }
   }
 
-  return -1
-}
+  return -1;
+};
 
 exports.nextSmaller = nextSmaller;
 
-console.log(nextSmaller(21))
+
 
 // Ttitle Case
 // A string is considered to be in title case if each word in the string is either (a) capitalised (that is, only the first letter of the word is in upper case)
@@ -133,106 +128,87 @@ function titleCase(title, minorWords) {
 
 exports.titleCase = titleCase;
 
-console.log(titleCase("THE WIND IN THE WILLOWS", "The In")); // expect 'The Wind in the Willows'
 
-// Number of vowels
-// Ur function should return a number of vowels in the given string
-
-const findVowels = (word) => {
-  const matches = word.match(/[aeiouy]/gi)
-  return matches ? matches.length : 0
-}
-
-console.log(findVowels('Sunny oister and me')) // expect 7
-console.log(findVowels('apple')) // expect 2
 
 
 // Factorial
 // To execute factorial of number not using recursion method
 
 const factorial = (nmb) => {
-  let result = 1
-  while(nmb > 1) {
-    result = result * nmb
-    nmb -= 1
+  let result = 1;
+  while (nmb > 1) {
+    result = result * nmb;
+    nmb -= 1;
   }
   return result;
-}
-
-console.log(factorial(5)) // expect 120
-console.log(factorial(9)) // expect 362880
+};
 
 exports.factorial = factorial;
 
+
 // Function that should merge all the given arrays that are placed in one array and to sort all the numbers from them
 
-const arr = [[1, 5, 7, 20], [3, 100, 110], [6, 13, 28]];
-
 const merge = (arg1, arg2) => {
-  let count = 0
-  let count2 = 0
-  let result = []
-  for(let i = 0; i < arg1.length + arg2.length; i += 1) {
+  let count = 0;
+  let count2 = 0;
+  let result = [];
+  for (let i = 0; i < arg1.length + arg2.length; i += 1) {
     if (count === arg1.length) {
-      result.push(arg2[count2])
-      count2 += 1
-      continue
+      result.push(arg2[count2]);
+      count2 += 1;
+      continue;
     }
     if (count2 === arg2.length) {
-      result.push(arg1[count])
-      count += 1
-      continue
+      result.push(arg1[count]);
+      count += 1;
+      continue;
     }
     if (arg1[count] <= arg2[count2]) {
-      result.push(arg1[count])
-      count += 1
-      continue
+      result.push(arg1[count]);
+      count += 1;
+      continue;
     }
-    result.push(arg2[count2])
-    count2 += 1
+    result.push(arg2[count2]);
+    count2 += 1;
   }
-  return result
-}
+  return result;
+};
 
 const sortedArr = (arr) => {
-  return arr.reduce((acc, rec) => merge(acc, rec), [])
-}
-
-console.log(sortedArr) // expect 1,3,5,6,7,13,20,28,100,110
+  return arr.reduce((acc, rec) => merge(acc, rec), []);
+};
 
 exports.sortedArr = sortedArr;
 
+
+
 // Find the biggest number in the array with arrays
 
-const array = [[1,3,42,3432222,13], [22323, 11, 343443222, 49999999993, 233], [12,434,3333,34]]
-
 const biggestNmbArr = (array) => {
-  return array.map((it) => {
-    return it.reduce((acc, rec) => Math.max(acc, rec))
-  }).reduce((acc, rec) => Math.max(acc, rec))
-}
-
-console.log(biggestNmbArr(array)); // expect 49999999993
+  return array
+    .map((it) => {
+      return it.reduce((acc, rec) => Math.max(acc, rec));
+    })
+    .reduce((acc, rec) => Math.max(acc, rec));
+};
 
 exports.biggestNmbArr = biggestNmbArr;
 
-// Find words with specific letters in it in the array
 
-const wordArray = ['fresh', 'lemon', 'horse', 'soap', 'maverick']
+// Find words with specific letters in it in the array
 
 const findWord = (element, wordArray) => {
   return wordArray.reduce((acc, rec) => {
     if (acc === "" && rec.includes(element)) return rec;
-    if(rec.includes(element)) {
-      return `${acc}, ${rec}`
+    if (rec.includes(element)) {
+      return `${acc}, ${rec}`;
     }
-    return acc
-  }, '')
-}
+    return acc;
+  }, "");
+};
 
 exports.findWord = findWord;
 
-console.log(findWord('e', wordArray)) // expect fresh, lemon, horse, maverick
 
 // To count the number of word in the given array
 
@@ -241,11 +217,9 @@ const nmbArrWord = (arr) => {
   return arr.reduce((acc, rec) => {
     return {
       ...acc,
-      [rec]: (acc[rec] ?? 0) + 1
-    }
-  }, {})
-}
-
-console.log(nmbArrWord(['apple', 'appleJuice', 'brownie', 'sledges', 'furry', 'apple'])) // expect { apple: 2, appleJuice: 1, brownie: 1, sledges: 1, furry: 1 }
+      [rec]: (acc[rec] ?? 0) + 1,
+    };
+  }, {});
+};
 
 exports.nmbArrWord = nmbArrWord;

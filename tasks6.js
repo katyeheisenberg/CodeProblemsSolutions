@@ -41,9 +41,6 @@ const productArr = (nums) => {
   return result;
 };
 
-console.log(productArr([1,2,4,5,1])) // expect [ 40, 20, 10, 8, 40 ]
-console.log(productArr([1, 2, 3, 4])); // expect [ 24, 12, 8, 6 ]
-
 exports.productArr = productArr;
 
 const productArr2 = (nums) => {
@@ -63,9 +60,6 @@ const productArr2 = (nums) => {
 
   return result;
 };
-
-console.log(productArr2([1, 2, 4, 5, 1]));
-console.log(productArr2([1, 2, 3, 4]));
 
 exports.productArr2 = productArr2;
 
@@ -109,9 +103,6 @@ const robberFunc = (arr) => {
   return Math.max(arr[arr.length - 1], arr[arr.length - 2]);
 };
 
-console.log(robberFunc([2, 7, 9, 3, 1])); // expect 12
-console.log(robberFunc([1, 2, 3, 1])); // expect 4
-
 exports.robberFunc = robberFunc;
 
 // 121. Best Time to Buy and Sell Stock
@@ -148,9 +139,6 @@ const timeStockFunc = (arr) => {
   }
   return profit;
 };
-
-console.log(timeStockFunc([7, 6, 4, 3, 1])); // expect 0
-console.log(timeStockFunc([7, 1, 5, 3, 6, 4])); // expect 5
 
 exports.timeStockFunc = timeStockFunc;
 
@@ -271,9 +259,6 @@ const isHappy = (n) => {
   }
 };
 
-console.log(isHappy(19)); // true
-console.log(isHappy(2)); // false
-
 exports.isHappy = isHappy;
 
 // 1762. Buildings w Ocean view
@@ -306,7 +291,5 @@ const ocean = (arr) => {
   }
   return result.reverse();
 };
-console.log(ocean([4, 2, 3, 1])); // expect [0, 2, 3]
-console.log(ocean([4, 3, 2, 1])); // expect [0, 1, 2, 3]
 
 exports.ocean = ocean;

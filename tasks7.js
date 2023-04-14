@@ -26,8 +26,8 @@ const simplifyPath = (path) => {
   return "/" + result.join("/");
 };
 
-console.log(simplifyPath("/home/")); // expect "/home"
-console.log(simplifyPath("/home//foo/")); // expect "/home/foo"
+exports.simplifyPath = simplifyPath;
+
 
 // 702. Search in a Sorted Array of Unknown Size
 // Given an integer array sorted in ascending order, write a function to search target in nums.

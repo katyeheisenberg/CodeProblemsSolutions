@@ -29,18 +29,7 @@
 
 // solution <- actually it doesnt work in leetcode as it throws type error for array deconstructions i,j fron currNode in while loop in dFS func
 // however it runs locally on the node serveer and in the leetcode's tests
-const grid1 = [
-  ["1", "1", "1", "1", "0"],
-  ["1", "1", "0", "1", "0"],
-  ["1", "1", "0", "0", "0"],
-  ["0", "0", "0", "0", "0"],
-];
-const grid2 = [
-  ["1", "1", "0", "0", "0"],
-  ["1", "1", "0", "0", "0"],
-  ["0", "0", "1", "0", "0"],
-  ["0", "0", "0", "1", "1"],
-];
+
 const getAdjN = (i, j, grid, visited) => {
   const aN = [];
 
@@ -95,10 +84,10 @@ const numIslands = (grid) => {
 
   return islandCount;
 };
-console.log(numIslands(grid1));
-console.log(numIslands(grid2));
 
 exports.numIslands = numIslands;
+
+
 
 // another solution
 const teraform = (i, j, grid) => {
@@ -124,10 +113,11 @@ const numIslands2 = (grid) => {
 
   return islandCount;
 };
-console.log(numIslands2(grid1));
+
+
+
 
 // Longest substring without repeating characters 3.
-
 // Given a string s, find the length of the longest substring without repeating characters.
 
 // Example 1:
@@ -175,9 +165,9 @@ const lengthOfLongestSubstring = (s) => {
   return max;
 };
 
-console.log(lengthOfLongestSubstring('sdfsghjkqqq'), 'Longest substring')
-
 exports.lengthOfLongestSubstring = lengthOfLongestSubstring;
+
+
 
 // to find the shortest word
 // to create function which will find the first shortest word in the given string
@@ -186,14 +176,14 @@ exports.lengthOfLongestSubstring = lengthOfLongestSubstring;
 // Output: 'is'
 
 const findShortest = (str) => {
-  const splittedStr = str.split(' ') // -> to create array of words from string argument
-  const sortedWords = splittedStr.sort((a, b) => a.length - b.length) // to sort array in ascending way, we will sort each word by its length
-  return sortedWords[0] // we return the first element of sorted array of words, the shortest one
-}
-
-console.log(findShortest("The mischievous dog is Jack"));
+  const splittedStr = str.split(" "); // -> to create array of words from string argument
+  const sortedWords = splittedStr.sort((a, b) => a.length - b.length); // to sort array in ascending way, we will sort each word by its length
+  return sortedWords[0]; // we return the first element of sorted array of words, the shortest one
+};
 
 exports.findShortest = findShortest;
+
+
 
 // Find the highest and the lowest nummber in the array
 // to create a function whicj will find hichest and lowest numbers in the array
@@ -203,13 +193,10 @@ exports.findShortest = findShortest;
 // Output: [-2, 87]
 
 const findMM = (arr) => {
-  return [Math.min(...arr), Math.max(...arr)]
-}
-
-console.log(findMM([1, 2, -2, 6, 87]));
+  return [Math.min(...arr), Math.max(...arr)];
+};
 
 exports.findMM = findMM;
-
 
 // 20. Valid Parentheses
 // Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
@@ -257,6 +244,3 @@ const isValid = (string) => {
 };
 
 exports.isValid = isValid;
-
-console.log(isValid("(]")); // expect to be equal to false
-console.log(isValid("()[]{}")); // expect to be equal to true

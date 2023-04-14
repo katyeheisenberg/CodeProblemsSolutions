@@ -24,8 +24,6 @@ const isValidAnagram = (s, t) => {
     if(count[letter] !== 0) return false
   }
   return true
-}
-console.log(isValidAnagram("anagram", "nagaram")); // expect true
-console.log(isValidAnagram("bom", "tom")); // expect false
+};
 
 exports.isValidAnagram = isValidAnagram;

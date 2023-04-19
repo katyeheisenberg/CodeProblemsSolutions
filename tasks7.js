@@ -70,13 +70,6 @@ exports.findTarget = findTarget;
 // Given an integer array nums and an integer k, return the kth largest element in the array.
 // Note that it is the kth largest element in the sorted order, not the kth distinct element.
 
-// O(n * log(n)) solution below
-
-const findKth = (nums, k) => {
-  nums.sort((a, b) => b - a);
-  return nums[k - 1];
-};
-
 function part(arr, from, to) {
   let pivot = from;
   for (let i = from; i < to; i += 1) {
@@ -96,7 +89,9 @@ const findKth2 = (nums, k) => {
   if (idx < k) return findKth2(nums.slice(idx + 1), k - idx - 1);
   return findKth2(nums.slice(0, idx), k);
 };
-console.log(findKth2([3, 2, 1, 5, 6, 4], 2)); // expect 5
+
+exports.findKth2 = findKth2;
+
 
 // Task from university
 

@@ -1,4 +1,4 @@
-const { simplifyPath, findTarget, findKth2 } = require("../tasks7");
+const { simplifyPath, findTarget, findKth2, glueWords } = require("../tasks7");
 
 describe("tests of simplify function", function () {
   test("convert /home/ into /home", function () {
@@ -26,3 +26,12 @@ describe("test kth largest element in an array", function () {
     expect(findKth2([3, 2, 1, 5, 6, 4], 4)).toBe(3);
   });
 });
+
+describe("test of university's task", function() {
+  test("шлакоблок, окунь to be шлакоблококунь", function () {
+    expect(glueWords("шлакоблок", "окунь")).toEqual("шлакоблококунь");
+  });
+  test("папа папаха to be папаха", function () {
+    expect(glueWords("папа", "папаха")).toEqual("папаха");
+  });
+})

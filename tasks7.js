@@ -95,7 +95,7 @@ exports.findKth2 = findKth2;
 
 // Task from university
 
-const gi = (w1, w2) => {
+const glueWords = (w1, w2) => {
   let howManyLetters2ndWord = 0;
   let indexOfUselessLetter1stword = w1.length - 2 - howManyLetters2ndWord;
   let firstpart = w1.slice(0, indexOfUselessLetter1stword);
@@ -113,7 +113,10 @@ const gi = (w1, w2) => {
   }
   return `${firstpart}${w2}`;
 };
-console.log(gi("шлакоблок", "окунь"));
-console.log(gi("папа", "папаха"));
-console.log(gi("гора", "радуга"));
-console.log(gi("груша", "спичка"));
+
+exports.glueWords = glueWords;
+
+console.log(glueWords("шлакоблок", "окунь"));
+console.log(glueWords("папа", "папаха"));
+console.log(glueWords("гора", "радуга"));
+console.log(glueWords("груша", "спичка"));

@@ -8,19 +8,16 @@
 // Two asteroids moving in the same direction will never meet.
 
 // Example 1:
-
 // Input: asteroids = [5,10,-5]
 // Output: [5,10]
 // Explanation: The 10 and -5 collide resulting in 10. The 5 and 10 never collide.
 
 // Example 2:
-
 // Input: asteroids = [8,-8]
 // Output: []
 // Explanation: The 8 and -8 collide exploding each other.
 
 // Example 3:
-
 // Input: asteroids = [10,2,-5]
 // Output: [10]
 // Explanation: The 2 and -5 collide resulting in -5. The 10 and -5 collide resulting in 10.
@@ -59,7 +56,8 @@ const astroCollision = (arr) => {
   return res;
 };
 
-console.log(astroCollision([5, 10, -5])); // excepted output would be equal to [10]
+exports.astroCollision = astroCollision;
+
 
 // 867. Transpose Matrix
 // Given a 2D integer array matrix, return the transpose of matrix.
@@ -217,5 +215,5 @@ const climbStairs = (n) => {
   return res;
 };
 
-console.log(climbStairs(5)) // expect --> 8
-console.log(climbStairs(9)) // expect --> 55
+console.log(climbStairs(5)); // expect --> 8
+console.log(climbStairs(9)); // expect --> 55

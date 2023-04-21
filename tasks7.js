@@ -115,8 +115,3 @@ const glueWords = (w1, w2) => {
 };
 
 exports.glueWords = glueWords;
-
-console.log(glueWords("шлакоблок", "окунь"));
-console.log(glueWords("папа", "папаха"));
-console.log(glueWords("гора", "радуга"));
-console.log(glueWords("груша", "спичка"));

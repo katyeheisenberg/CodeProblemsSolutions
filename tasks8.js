@@ -58,7 +58,6 @@ const astroCollision = (arr) => {
 
 exports.astroCollision = astroCollision;
 
-
 // 867. Transpose Matrix
 // Given a 2D integer array matrix, return the transpose of matrix.
 // The transpose of a matrix is the matrix flipped over its main diagonal,
@@ -92,13 +91,8 @@ const transpose = (matrix) => {
   return newMatrix;
 };
 
-console.log(
-  transpose([
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-  ])
-);
+exports.transpose = transpose;
+
 
 // 48. Rotate Image
 // You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).

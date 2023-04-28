@@ -93,7 +93,6 @@ const transpose = (matrix) => {
 
 exports.transpose = transpose;
 
-
 // 48. Rotate Image
 // You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
 // You have to rotate the image in-place, which means you have to modify the input 2D matrix directly.
@@ -123,19 +122,9 @@ const rotateImg = (matrix) => {
   return matrix;
 };
 
-console.log(
-  rotateImg([
-    [5, 1, 9, 11],
-    [2, 4, 8, 10],
-    [13, 3, 6, 7],
-    [15, 14, 12, 16],
-  ])
-); // --> expect [
-//   [ 15, 13, 2, 5 ],
-//   [ 14, 3, 4, 1 ],
-//   [ 12, 6, 8, 9 ],
-//   [ 16, 7, 10, 11 ]
-// ]
+exports.rotateImg = rotateImg;
+
+
 
 // 217. Contains Duplicate
 // Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
@@ -153,6 +142,8 @@ const containsDuplicate = function (nums) {
   }
   return false;
 };
+
+exports.containsDuplicate = containsDuplicate;
 
 console.log(containsDuplicate([1, 2, 3, 4])); // --> expect false
 

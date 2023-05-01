@@ -58,6 +58,8 @@ const astroCollision = (arr) => {
 
 exports.astroCollision = astroCollision;
 
+
+
 // 867. Transpose Matrix
 // Given a 2D integer array matrix, return the transpose of matrix.
 // The transpose of a matrix is the matrix flipped over its main diagonal,
@@ -92,6 +94,8 @@ const transpose = (matrix) => {
 };
 
 exports.transpose = transpose;
+
+
 
 // 48. Rotate Image
 // You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
@@ -145,7 +149,8 @@ const containsDuplicate = function (nums) {
 
 exports.containsDuplicate = containsDuplicate;
 
-console.log(containsDuplicate([1, 2, 3, 4])); // --> expect false
+
+
 
 // 448. Find All Numbers Disappeared in an Array
 // Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
@@ -176,7 +181,9 @@ const findDisappearedNumbers = function (nums) {
   return missing;
 };
 
-console.log(findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1])); // --> expect [5, 6]
+exports.findDisappearedNumbers = findDisappearedNumbers;
+
+
 
 // 70. Climbing Stairs
 // You are climbing a staircase. It takes n steps to reach the top.
@@ -200,5 +207,4 @@ const climbStairs = (n) => {
   return res;
 };
 
-console.log(climbStairs(5)); // expect --> 8
-console.log(climbStairs(9)); // expect --> 55
+exports.climbStairs = climbStairs;

@@ -3,6 +3,8 @@ const {
   transpose,
   rotateImg,
   containsDuplicate,
+  findDisappearedNumbers,
+  climbStairs,
 } = require("../tasks8");
 
 describe("test of asteroid collision problem", function () {
@@ -61,5 +63,25 @@ describe("tests of rotateImg funtion", function () {
 describe("tests of containsDuplicate function", function () {
   test("array with no duplicates", function () {
     expect(containsDuplicate([1, 2, 3, 4])).toBe(false);
+  });
+});
+
+describe("tests of find disappeared numbers in an array function", function () {
+  test("5, 6 are missing", function () {
+    expect(findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1])).toEqual([5, 6]);
+  });
+  test("5, 6, 9, 10, 12, 13, 14 are missing", function () {
+    expect(findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1, 11, 15])).toEqual([
+      5, 6, 9, 10, 12, 13, 14,
+    ]);
+  });
+});
+
+describe("tests of climbing stars function", function () {
+  test("5 stairs and 8 path", function () {
+    expect(climbStairs(5)).toBe(8);
+  });
+  test("5 stairs and 8 path", function () {
+    expect(climbStairs(9)).toBe(55);
   });
 });

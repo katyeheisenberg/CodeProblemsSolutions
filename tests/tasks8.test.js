@@ -16,8 +16,8 @@ describe("test of asteroid collision problem", function () {
   });
 });
 
-describe("", function () {
-  test("", function () {
+describe("test of transpose function", function () {
+  test("transpose a matrix", function () {
     expect(
       transpose([
         [1, 2, 3],

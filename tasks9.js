@@ -32,22 +32,6 @@ const hasCycle = function (head) {
 };
 
 
-// The reverse function which reverses string
-
-function reverse(word) {
-    let backwards = '';
-    let index = word.length - 1;
-    while(index >= 0) {
-      backwards += word[index]
-      index -= 1;
-    }
-    return backwards
-  };
-
-  console.log(reverse('streee'))
-
-
-
 // 203. Remove Linked List Elements
 // Given the head of a linked list and an integer val,
 // remove all the nodes of the linked list that has Node.val == val, and return the new head.
@@ -72,32 +56,6 @@ const removeElements = function(head, val) {  //TC = 0(1) SC = 0(N)
     return edgeNode.next
 };
 
-const foo = (nmb) => {
-  let result = nmb;
-  return {
-    add(int) {
-      result += int
-      return this
-    },
-    sub(int) {
-      result -= int
-      return this
-    },
-    mul(int) {
-      result = result * int
-      return this
-    },
-    div(int) {
-      result = result / int
-      return this
-    },
-    val() {
-      return result
-    }
-  }
-}
-const calc = foo(0);
-console.log(calc.add(5).mul(4).div(10).sub(1).val())
 
 
 // 34. Find First and Last Position of Element in Sorted Array
@@ -109,8 +67,6 @@ console.log(calc.add(5).mul(4).div(10).sub(1).val())
 //     -109 <= nums[i] <= 109
 //     nums is a non-decreasing array.
 //     -109 <= target <= 109
-const nums = [1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9];
-const target = 4;
 
 const searchRange = function (nums, target) {
   return [getF(nums, target), getL(nums, target)];
@@ -144,7 +100,9 @@ function getL(nums, target) {
   return nums[left] === target ? left : -1;
 }
 
-console.log(searchRange(nums, target)) // expect -> [3, 11]
+exports.searchRange = searchRange;
+
+
 
 
 // Given a string and a number.

@@ -142,6 +142,8 @@ const findSum = (arr, n) => {
   return []
 };
 
+exports.findSum = findSum;
+
 console.log(findSum([-3, 0, 1, 3, 4], 5)) // expect -> [1, 4]
 console.log(findSum([-3, 0, 1, 3, 4, 5], 6)) // expect [1, 5]
 
